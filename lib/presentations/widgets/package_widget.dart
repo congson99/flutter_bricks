@@ -1,6 +1,6 @@
-import 'package:bricks/models/package_model.dart';
-import 'package:bricks/util/style/base_color.dart';
-import 'package:bricks/util/style/base_text_style.dart';
+import 'package:bricks/data/models/local_package_model.dart';
+import 'package:bricks/utils/style/base_color.dart';
+import 'package:bricks/utils/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -12,13 +12,13 @@ class PackageWidget extends StatelessWidget {
   });
 
   final double cardSize;
-  final PackageModel data;
+  final LocalPackage data;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          Navigator.push(context, MaterialPageRoute(builder: (_) => data.page)),
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (_) => data.demoPage)),
       child: Container(
         width: cardSize,
         color: Colors.transparent,
@@ -39,10 +39,16 @@ class PackageWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              data.name,
-              overflow: TextOverflow.ellipsis,
-              style: BaseTextStyle.body().copyWith(fontWeight: FontWeight.w500),
+            SizedBox(
+              height: 34,
+              child: Text(
+                data.name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style:
+                    BaseTextStyle.body().copyWith(fontWeight: FontWeight.w500),
+              ),
             ),
           ],
         ),

@@ -11,6 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  _file:
+    path: local_packages/_file
+  _photo:
+    path: local_packages/_photo
+
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.11.0
   flutter_svg: ^1.1.6

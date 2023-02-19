@@ -1,8 +1,9 @@
 import 'dart:math';
 
-import 'package:bricks/data/package_data.dart';
+import 'package:bricks/data/repositories/package_responsitory_impl.dart';
 import 'package:bricks/presentations/widgets/package_widget.dart';
-import 'package:bricks/util/style/base_text_style.dart';
+import 'package:bricks/utils/helper/sorting_helper.dart';
+import 'package:bricks/utils/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -30,9 +31,9 @@ class DashboardPage extends StatelessWidget {
               buildLogo(),
               const SizedBox(height: 32),
               buildFeature(horizontalMargin, cardSize),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
               buildObject(horizontalMargin, cardSize),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
               buildAnimation(horizontalMargin, cardSize),
               const SizedBox(height: 32),
               SizedBox(height: MediaQuery.of(context).padding.bottom),
@@ -60,7 +61,8 @@ class DashboardPage extends StatelessWidget {
         Wrap(
           spacing: horizontalMargin,
           runSpacing: horizontalMargin,
-          children: PackageData.feature()
+          children: PackageRepository()
+              .getFeaturePackages()
               .map((data) => PackageWidget(cardSize: cardSize, data: data))
               .toList(),
         )
@@ -76,8 +78,9 @@ class DashboardPage extends StatelessWidget {
         SizedBox(height: horizontalMargin),
         Wrap(
           spacing: horizontalMargin,
-          runSpacing: horizontalMargin,
-          children: PackageData.object()
+          runSpacing: horizontalMargin - 16,
+          children: SortingHelper.localPackageByName(
+                  PackageRepository().getObjectPackages())
               .map((data) => PackageWidget(cardSize: cardSize, data: data))
               .toList(),
         )
@@ -94,7 +97,8 @@ class DashboardPage extends StatelessWidget {
         Wrap(
           spacing: horizontalMargin,
           runSpacing: horizontalMargin,
-          children: PackageData.animation()
+          children: PackageRepository()
+              .getAnimationPackages()
               .map((data) => PackageWidget(cardSize: cardSize, data: data))
               .toList(),
         )
