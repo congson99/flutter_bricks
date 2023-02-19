@@ -1,5 +1,5 @@
 import 'package:bricks/data/models/local_package_model.dart';
-import 'package:bricks/utils/style/base_color.dart';
+import 'package:bricks/presentations/package_info_page.dart';
 import 'package:bricks/utils/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,16 +9,19 @@ class PackageWidget extends StatelessWidget {
     super.key,
     required this.cardSize,
     required this.data,
+    required this.horizontalMargin,
   });
 
   final double cardSize;
   final LocalPackage data;
+  final double horizontalMargin;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (_) => data.demoPage)),
+      onTap: () => pushDemoPage(context),
+      onDoubleTap: () => pushInfoPage(context),
+      onLongPress: () => pushInfoPage(context),
       child: Container(
         width: cardSize,
         color: Colors.transparent,
@@ -26,21 +29,21 @@ class PackageWidget extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: cardSize,
-              width: cardSize,
+              height: cardSize - horizontalMargin,
+              width: cardSize - horizontalMargin,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                  color: BaseColor.grey100,
+                  color: Colors.black12,
                   borderRadius: BorderRadius.circular(16)),
               child: SvgPicture.asset(
                 data.iconPath,
-                color: BaseColor.grey900,
+                color: Colors.black,
                 fit: BoxFit.contain,
               ),
             ),
             const SizedBox(height: 8),
             SizedBox(
-              height: 34,
+              height: 36,
               child: Text(
                 data.name,
                 maxLines: 2,
@@ -54,5 +57,14 @@ class PackageWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void pushDemoPage(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => data.demoPage));
+  }
+
+  void pushInfoPage(BuildContext context) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => PackageInfoPage(packageModel: data)));
   }
 }

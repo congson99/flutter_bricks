@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bricks/data/models/local_package_model.dart';
 import 'package:bricks/data/repositories/package_responsitory_impl.dart';
 import 'package:bricks/presentations/widgets/package_widget.dart';
 import 'package:bricks/utils/helper/sorting_helper.dart';
@@ -15,13 +16,11 @@ class DashboardPage extends StatelessWidget {
     const double minCardSize = 80;
     double contentWidth = min(MediaQuery.of(context).size.width, 700);
     int count = contentWidth ~/ minCardSize;
-    double cardSize =
-        (contentWidth - horizontalMargin * 2 - (count - 1) * horizontalMargin) /
-            count;
+    double cardSize = (contentWidth - horizontalMargin) / count;
     return Scaffold(
       body: Container(
         width: contentWidth,
-        padding: const EdgeInsets.symmetric(horizontal: horizontalMargin),
+        padding: const EdgeInsets.symmetric(horizontal: horizontalMargin / 2),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,11 +29,12 @@ class DashboardPage extends StatelessWidget {
               const SizedBox(height: 32),
               buildLogo(),
               const SizedBox(height: 32),
-              buildFeature(horizontalMargin, cardSize),
-              const SizedBox(height: 16),
-              buildObject(horizontalMargin, cardSize),
-              const SizedBox(height: 16),
-              buildAnimation(horizontalMargin, cardSize),
+              buildPackageGroup(horizontalMargin, cardSize, "Feature",
+                  PackageRepository().getFeaturePackages()),
+              buildPackageGroup(horizontalMargin, cardSize, "Object",
+                  PackageRepository().getObjectPackages()),
+              buildPackageGroup(horizontalMargin, cardSize, "Animation",
+                  PackageRepository().getAnimationPackages()),
               const SizedBox(height: 32),
               SizedBox(height: MediaQuery.of(context).padding.bottom),
             ],
@@ -52,56 +52,25 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-  Widget buildFeature(double horizontalMargin, double cardSize) {
+  Widget buildPackageGroup(double horizontalMargin, double cardSize,
+      String name, List<LocalPackage> packages) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text("Feature", style: BaseTextStyle.subtitle1()),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: horizontalMargin / 2),
+          child: Text(name, style: BaseTextStyle.subtitle1()),
+        ),
         SizedBox(height: horizontalMargin),
         Wrap(
-          spacing: horizontalMargin,
-          runSpacing: horizontalMargin,
-          children: PackageRepository()
-              .getFeaturePackages()
-              .map((data) => PackageWidget(cardSize: cardSize, data: data))
+          children: SortingHelper.localPackageByName(packages)
+              .map((data) => PackageWidget(
+                  cardSize: cardSize,
+                  data: data,
+                  horizontalMargin: horizontalMargin))
               .toList(),
-        )
-      ],
-    );
-  }
-
-  Widget buildObject(double horizontalMargin, double cardSize) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text("Object", style: BaseTextStyle.subtitle1()),
-        SizedBox(height: horizontalMargin),
-        Wrap(
-          spacing: horizontalMargin,
-          runSpacing: horizontalMargin - 16,
-          children: SortingHelper.localPackageByName(
-                  PackageRepository().getObjectPackages())
-              .map((data) => PackageWidget(cardSize: cardSize, data: data))
-              .toList(),
-        )
-      ],
-    );
-  }
-
-  Widget buildAnimation(double horizontalMargin, double cardSize) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text("Animation", style: BaseTextStyle.subtitle1()),
-        SizedBox(height: horizontalMargin),
-        Wrap(
-          spacing: horizontalMargin,
-          runSpacing: horizontalMargin,
-          children: PackageRepository()
-              .getAnimationPackages()
-              .map((data) => PackageWidget(cardSize: cardSize, data: data))
-              .toList(),
-        )
+        ),
+        SizedBox(height: horizontalMargin / 2),
       ],
     );
   }
