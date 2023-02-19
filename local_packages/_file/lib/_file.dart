@@ -1,1 +1,1 @@
-export 'src/descriptions.dart';
+export 'src/description.dart';

@@ -6,11 +6,11 @@ class FileLocalPackage extends LocalPackage {
   FileLocalPackage()
       : super(
           "230219",
-          FilePackageDescriptions().version,
-          FilePackageDescriptions().name,
+          FilePackageDescription().version,
+          FilePackageDescription().name,
           "assets/icons/file.svg",
-          FilePackageDescriptions().demoPage,
-          FilePackageDescriptions().description,
+          FilePackageDescription().demoPage,
+          FilePackageDescription().description,
         );
 }
 
@@ -18,11 +18,11 @@ class PhotoPackage extends LocalPackage {
   PhotoPackage()
       : super(
           "230220",
-          PhotoPackageDescriptions().version,
-          PhotoPackageDescriptions().name,
+          PhotoPackageDescription().version,
+          PhotoPackageDescription().name,
           "assets/icons/photo.svg",
-          PhotoPackageDescriptions().demoPage,
-          PhotoPackageDescriptions().description,
+          PhotoPackageDescription().demoPage,
+          PhotoPackageDescription().description,
         );
 }
 
@@ -30,11 +30,11 @@ class TinderSwipePackage extends LocalPackage {
   TinderSwipePackage()
       : super(
           "230221",
-          PhotoPackageDescriptions().version,
+          PhotoPackageDescription().version,
           "Tinder Swipe",
           "assets/icons/tinder.svg",
-          PhotoPackageDescriptions().demoPage,
-          PhotoPackageDescriptions().description,
+          PhotoPackageDescription().demoPage,
+          PhotoPackageDescription().description,
         );
 }
 
@@ -42,10 +42,10 @@ class LoginPackage extends LocalPackage {
   LoginPackage()
       : super(
           "230222",
-          PhotoPackageDescriptions().version,
+          PhotoPackageDescription().version,
           "Login",
           "assets/icons/login.svg",
-          PhotoPackageDescriptions().demoPage,
-          PhotoPackageDescriptions().description,
+          PhotoPackageDescription().demoPage,
+          PhotoPackageDescription().description,
         );
 }
