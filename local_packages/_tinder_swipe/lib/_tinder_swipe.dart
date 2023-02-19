@@ -1,4 +1,4 @@
-library _pick_file;
+library _tinder_swipe;
 
 /// A Calculator.
 class Calculator {

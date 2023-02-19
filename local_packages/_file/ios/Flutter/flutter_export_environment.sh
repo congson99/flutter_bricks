@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/congson/Flutter/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/congson/Flutter/bricks/local_packages/_pick_file"
+export "FLUTTER_APPLICATION_PATH=/Users/congson/Flutter/bricks/local_packages/_file"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
