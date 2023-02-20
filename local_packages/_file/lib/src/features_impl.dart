@@ -12,33 +12,32 @@ class FilePackage implements FilePackageInterface {
   }
 
   @override
-  Widget fileCard(PlatformFile file) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 2,
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.all(4.0),
-              decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(16.0)),
-              child: fileIcon(file, 40.0),
-            ),
+  Widget fileCard(
+      {required PlatformFile file,
+      double iconSize = 56,
+      BoxDecoration? boxDecoration,
+      TextStyle? textStyle,
+      double? cardWidth}) {
+    return Container(
+      alignment: Alignment.center,
+      width: cardWidth ?? iconSize * 1.2,
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: iconSize * 1.2,
+            width: iconSize * 1.2,
+            decoration: boxDecoration ??
+                BoxDecoration(
+                    color: Colors.black12,
+                    borderRadius: BorderRadius.circular(12.0)),
+            child: fileIcon(file, iconSize),
           ),
-        ),
-        Expanded(
-          flex: 1,
-          child: Text(
-            file.name,
-            style: const TextStyle(color: Colors.black54, fontSize: 12),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        )
-      ],
+          const SizedBox(height: 4),
+          Text(file.name,
+              style: textStyle, maxLines: 2, overflow: TextOverflow.ellipsis),
+        ],
+      ),
     );
   }
 
@@ -46,12 +45,12 @@ class FilePackage implements FilePackageInterface {
   Widget fileIcon(PlatformFile file, double? size) {
     return FileIcon(
       ".${file.extension}",
-      size: size ?? 28.0,
+      size: size ?? 24.0,
     );
   }
 
   @override
   void openFile(PlatformFile file) {
-    OpenFilex.open(file.path!);
+    OpenFilex.open(file.path);
   }
 }
