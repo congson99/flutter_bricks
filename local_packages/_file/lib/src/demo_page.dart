@@ -33,11 +33,36 @@ class _FilePackageDemoPageState extends State<FilePackageDemoPage> {
                 childAspectRatio: 3/4),
             itemBuilder: (context, index){
             final file = files[index];
-              return FilePackage().fileCard(file, context: context, closeTap: (){
-                setState(() {
-                  files.remove(file);
-                });
-              });
+              return GestureDetector(
+                  onTap: () => FilePackage().openFile(file),
+                  onLongPress: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Wrap(
+                              children: [
+                                ListTile(
+                                  leading: const Icon(Icons.file_open),
+                                  title: const Text("Open this file"),
+                                  onTap: () {
+                                    FilePackage().openFile(file);
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                ListTile(
+                                    leading: const Icon(Icons.delete),
+                                    title: const Text("Remove this file"),
+                                    onTap: (){
+                                       setState(() {
+                                         files.remove(file);
+                                       });
+                                      Navigator.pop(context);
+                                    })
+                              ]);
+                        });
+                  },
+                child: FilePackage().fileCard(file)
+              );
           }
         ),
       floatingActionButton: _uploadButton(),

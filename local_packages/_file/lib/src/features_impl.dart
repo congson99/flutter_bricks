@@ -12,58 +12,33 @@ class FilePackage implements FilePackageInterface {
   }
 
   @override
-  Widget fileCard(PlatformFile file,
-      {required VoidCallback closeTap, required BuildContext context}) {
-    return GestureDetector(
-      onTap: () => openFile(file),
-      onLongPress: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return Wrap(
-                  children: [
-                    ListTile(
-                      leading: const Icon(Icons.file_open),
-                      title: const Text("Open this file"),
-                      onTap: () =>  openFile(file),
-                    ),
-                    ListTile(
-                        leading: const Icon(Icons.delete),
-                        title: const Text("Remove this file"),
-                        onTap: () {
-                          closeTap();
-                          Navigator.pop(context);
-                        })
-              ]);
-            });
-      },
-      child: Column(
-        children: [
-          Expanded(
-            flex: 2,
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.all(4.0),
-                decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(16.0)),
-                child: fileIcon(file, 40.0),
-              ),
+  Widget fileCard(PlatformFile file) {
+    return Column(
+      children: [
+        Expanded(
+          flex: 2,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(4.0),
+              decoration: BoxDecoration(
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.circular(16.0)),
+              child: fileIcon(file, 40.0),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Text(
-              file.name,
-              style: const TextStyle(color: Colors.black54, fontSize: 12),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          )
-        ],
-      ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            file.name,
+            style: const TextStyle(color: Colors.black54, fontSize: 12),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          ),
+        )
+      ],
     );
   }
 

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 abstract class FilePackageInterface {
   Future<List<PlatformFile>> pickFile();
 
-  Widget fileCard(PlatformFile file, {required VoidCallback closeTap, required BuildContext context});
+  Widget fileCard(PlatformFile file);
 
   Widget fileIcon(PlatformFile file, double? size);
 
