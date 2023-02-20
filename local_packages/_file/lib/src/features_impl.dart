@@ -3,6 +3,7 @@ import 'package:file_icon/file_icon.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:open_filex/open_filex.dart';
+import 'package:path/path.dart' as path;
 
 class FilePackage implements FilePackageInterface {
   @override
@@ -14,6 +15,7 @@ class FilePackage implements FilePackageInterface {
   @override
   Widget fileCard(
       {required PlatformFile file,
+      int maxLinesTitle = 1,
       double iconSize = 56,
       BoxDecoration? boxDecoration,
       TextStyle? textStyle,
@@ -34,8 +36,12 @@ class FilePackage implements FilePackageInterface {
             child: fileIcon(file, iconSize),
           ),
           const SizedBox(height: 4),
-          Text(file.name,
-              style: textStyle, maxLines: 2, overflow: TextOverflow.ellipsis),
+          Wrap(
+            children: [
+              Text(file.name.split(path.extension(file.name))[0], style: textStyle, maxLines: maxLinesTitle, overflow: TextOverflow.ellipsis,),
+              Text(path.extension(file.name), style: textStyle,)
+            ],
+          ),
         ],
       ),
     );
