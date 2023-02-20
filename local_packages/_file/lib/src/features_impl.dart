@@ -1,28 +1,82 @@
 import 'package:_file/src/i_features.dart';
+import 'package:file_icon/file_icon.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:open_filex/open_filex.dart';
 
 class FilePackage implements FilePackageInterface {
   @override
-  PlatformFile pickFile() {
-    // TODO: implement pickFile
-    throw UnimplementedError();
+  Future<List<PlatformFile>> pickFile() async {
+    final result = await FilePicker.platform.pickFiles(allowMultiple: true);
+    return result!.files;
   }
 
   @override
-  Widget fileCard(PlatformFile file) {
-    // TODO: implement fileCard
-    throw UnimplementedError();
+  Widget fileCard(PlatformFile file,
+      {required VoidCallback closeTap, required BuildContext context}) {
+    return GestureDetector(
+      onTap: () => openFile(file),
+      onLongPress: () {
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return Wrap(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.file_open),
+                      title: const Text("Open this file"),
+                      onTap: () =>  openFile(file),
+                    ),
+                    ListTile(
+                        leading: const Icon(Icons.delete),
+                        title: const Text("Remove this file"),
+                        onTap: () {
+                          closeTap();
+                          Navigator.pop(context);
+                        })
+              ]);
+            });
+      },
+      child: Column(
+        children: [
+          Expanded(
+            flex: 2,
+            child: AspectRatio(
+              aspectRatio: 1,
+              child: Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(16.0)),
+                child: fileIcon(file, 40.0),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(
+              file.name,
+              style: const TextStyle(color: Colors.black54, fontSize: 12),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        ],
+      ),
+    );
   }
 
   @override
-  Widget fileIcon(PlatformFile file) {
-    // TODO: implement fileIcon
-    throw UnimplementedError();
+  Widget fileIcon(PlatformFile file, double? size) {
+    return FileIcon(
+      ".${file.extension}",
+      size: size ?? 28.0,
+    );
   }
 
   @override
   void openFile(PlatformFile file) {
-    // TODO: implement openFile
+    OpenFilex.open(file.path!);
   }
 }
