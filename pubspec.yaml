@@ -15,6 +15,8 @@ dependencies:
     path: local_packages/_file
   _photo:
     path: local_packages/_photo
+  _tinder_swipe:
+    path: local_packages/_tinder_swipe
 
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.11.0
