@@ -1,4 +1,4 @@
-import 'package:_file/src/presentations/demo_page.dart';
+import 'package:_file/src/demo_page.dart';
 import 'package:flutter/material.dart';
 
 class FilePackageDescription {
@@ -7,7 +7,13 @@ class FilePackageDescription {
   final Widget demoPage = const FilePackageDemoPage();
   final String description = "Provides some functionality with files."
       "\n\n"
-      "Includes: pick, display card with icon, get match icon."
+      "Includes: pick file, open file, display file card with icon, get match icon."
       "\n\n"
-      "Dependencies:";
+      "Dependencies:"
+      "\n"
+      "- file_picker: ^5.2.5"
+      "\n"
+      "- file_icon: ^1.0.0"
+      "\n"
+      "- open_filex: ^4.3.2";
 }
