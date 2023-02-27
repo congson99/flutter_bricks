@@ -1,5 +1,6 @@
 import 'package:_file/_file.dart';
 import 'package:_photo/_photo.dart';
+import 'package:_tinder_swipe/_tinder_swipe.dart';
 import 'package:bricks/data/models/local_package_model.dart';
 
 class FileLocalPackage extends LocalPackage {
@@ -30,11 +31,11 @@ class TinderSwipePackage extends LocalPackage {
   TinderSwipePackage()
       : super(
           "230221",
-          PhotoPackageDescription().version,
+          TinderSwipePackageDescription().version,
           "Tinder Swipe",
           "assets/icons/tinder.svg",
-          PhotoPackageDescription().demoPage,
-          PhotoPackageDescription().description,
+          TinderSwipePackageDescription().demoPage,
+          TinderSwipePackageDescription().description,
         );
 }
 
