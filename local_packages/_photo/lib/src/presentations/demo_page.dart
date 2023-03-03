@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
+import 'features_impl.dart';
 
 class PhotoPackageDemoPage extends StatefulWidget {
   const PhotoPackageDemoPage({Key? key}) : super(key: key);
@@ -14,29 +17,35 @@ class _PhotoPackageDemoPageState extends State<PhotoPackageDemoPage> {
 
   @override
   Widget build(BuildContext context) {
+    const double horizontalMargin = 16;
+    const double minCardSize = 80;
+    double contentWidth = min(MediaQuery.of(context).size.width, 700);
+    int count = contentWidth ~/ minCardSize;
+    double cardSize = (contentWidth - horizontalMargin) / count;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Photo"),
       ),
-      body: GridView.builder(
-          padding: const EdgeInsets.all(16.0),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 16.0,
-              crossAxisSpacing: 16.0,
-              childAspectRatio: 1),
-          itemCount: images.length,
-          itemBuilder: (context, index) {
-            final file = images[index];
-            return Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: FileImage(file),
-                  fit: BoxFit.cover
-                )
-              ),
-            );
-          }),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Wrap(
+          runSpacing: 16.0,
+          spacing: 16.0,
+          children: images
+              .map((e) => PhotoPackage().imageCard(
+                  context: context,
+                  file: e,
+                  cardSize: cardSize,
+                  horizontalMargin: horizontalMargin,
+                  remove: () {
+                    setState(() {
+                      images.remove(e);
+                    });
+                  }))
+              .toList(),
+        ),
+      ),
       floatingActionButton: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.end,
@@ -64,23 +73,21 @@ class _PhotoPackageDemoPageState extends State<PhotoPackageDemoPage> {
   }
 
   Future pickImage() async {
-    final temp = await ImagePicker().pickMultiImage();
-    for(var i in temp){
-      File file = File(i.path);
-      if(!images.contains(file)){
+    final temp = await PhotoPackage().pickImage();
+    for (var i in temp) {
+      if (!images.contains(i)) {
         setState(() {
-          images.add(file);
+          images.add(i);
         });
       }
     }
   }
 
   Future takePhoto() async {
-    final temp = await ImagePicker().pickImage(source: ImageSource.camera);
-    File file = File(temp!.path);
-    if (!images.contains(file)) {
+    final temp = await PhotoPackage().takePhoto();
+    if (!images.contains(temp)) {
       setState(() {
-        images.add(file);
+        images.add(temp);
       });
     }
   }
