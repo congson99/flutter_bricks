@@ -1,6 +1,6 @@
 name: _file
 description: File Handler
-version: 0.0.1
+version: 1.0.0
 publish_to: none
 
 environment:
@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  file_picker: ^5.2.5
+  file_icon: ^1.0.0
+  open_filex: ^4.3.2
 
 dev_dependencies:
   flutter_test:
