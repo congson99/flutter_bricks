@@ -54,8 +54,7 @@ class _TinderSwipePackageDemoPageState
       appBar: AppBar(
         title: const Text("Tinder Swipe"),
       ),
-      body: SafeArea(
-          child: Stack(
+      body: Stack(
         children: List.generate(cards.length, (index) {
           if (index == cards.length - 1) {
             return Stack(
@@ -67,7 +66,7 @@ class _TinderSwipePackageDemoPageState
           }
           return _card(index: index, image: images[index]);
         }),
-      )),
+      ),
     );
   }
 
@@ -75,10 +74,11 @@ class _TinderSwipePackageDemoPageState
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 32.0),
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).padding.bottom, horizontal: 32.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GestureDetector(
               onTap: () async {
