@@ -1,8 +1,8 @@
 import 'package:bricks/data/models/local_package_model.dart';
-import 'package:bricks/data/repositories/package_definitions.dart';
+import 'package:bricks/data/models/package_definitions.dart';
 
 final List<LocalPackage> featurePackages = [
-  LoginPackage(),
+  TMALoginPackage(),
 ];
 
 final List<LocalPackage> objectPackages = [
