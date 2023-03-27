@@ -1,5 +1,5 @@
 import 'package:bricks/data/models/local_package_model.dart';
-import 'package:bricks/presentations/package_info_page.dart';
+import 'package:bricks/presentations/widgets/package_info_widget.dart';
 import 'package:bricks/utils/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -64,7 +64,16 @@ class PackageWidget extends StatelessWidget {
   }
 
   void pushInfoPage(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (_) => PackageInfoPage(packageModel: data)));
+    double screenHeight = MediaQuery.of(context).size.height;
+    double topPadding = MediaQuery.of(context).padding.top;
+    showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (context) {
+          return PackageInfoWidget(
+              packageModel: data,
+              maxSafeHeight: (screenHeight - topPadding) / screenHeight);
+        });
   }
 }
