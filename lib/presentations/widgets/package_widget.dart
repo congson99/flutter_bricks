@@ -67,13 +67,13 @@ class PackageWidget extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double topPadding = MediaQuery.of(context).padding.top;
     showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        builder: (context) {
-          return PackageInfoWidget(
-              packageModel: data,
-              maxSafeHeight: (screenHeight - topPadding) / screenHeight);
-        });
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return PackageInfoWidget(
+            packageModel: data,
+            maxSafeHeight: (screenHeight - topPadding) / screenHeight);
+      });
   }
 }

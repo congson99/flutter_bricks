@@ -39,4 +39,8 @@ class BaseTextStyle {
   static TextStyle caption({Color? color, double? fontSize}) {
     return TextStyle(fontSize: 12, color: color ?? Colors.black);
   }
+
+  static TextStyle button(){
+    return const TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w500);
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:_file/_file.dart';
 import 'package:_photo/_photo.dart';
+import 'package:_button/_button.dart';
 import 'package:bricks/data/models/local_package_model.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,17 @@ class PhotoPackage extends LocalPackage {
           "assets/icons/photo.svg",
           PhotoPackageDescription().demoPage,
           PhotoPackageDescription().description,
+        );
+}
+
+class ButtonPackage extends LocalPackage {
+  ButtonPackage()
+      : super(
+          "230223",
+          ButtonPackageDescription().name,
+          "assets/icons/file.svg",
+          ButtonPackageDescription().demoPage,
+          ButtonPackageDescription().description,
         );
 }
 

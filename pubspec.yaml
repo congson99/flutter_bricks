@@ -12,6 +12,8 @@ dependencies:
     path: local_packages/_file
   _photo:
     path: local_packages/_photo
+  _button:
+    path: local_packages/_button
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
