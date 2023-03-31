@@ -101,6 +101,7 @@ class ButtonPackageDemoPage extends StatelessWidget {
                 onPressed: () {},
                 title: 'BUTTON',
                 isActive: true,
+                
                 iconSize: 32,
                 preIconUrl: "assets/icons/login.svg"),
             const SizedBox(
