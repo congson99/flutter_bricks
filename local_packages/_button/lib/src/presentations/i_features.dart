@@ -4,19 +4,19 @@ abstract class ButtonPackageInterface {
   Widget primary({
     required VoidCallback onPressed,
     required String title,
+    bool isActive,
     String? preIconUrl,
-    String? afterIconUrl,
   });
   Widget secondary({
     required VoidCallback onPressed,
     required String title,
     String? preIconUrl,
-    String? afterIconUrl,
+    bool isActive,
   });
   Widget text({
     required VoidCallback onPressed,
     required String title,
+    bool isActive,
     String? preIconUrl,
-    String? afterIconUrl,
   });
 }
