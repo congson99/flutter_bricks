@@ -19,7 +19,11 @@ class ButtonPackage implements ButtonPackageInterface {
     Color? textColor = Colors.white,
     Color disableBackgroundColor = ButtonPackage.defaultdisableBackgroundColor,
     Color disableTextColor = ButtonPackage.defaultdisableTextColor,
-    TextStyle? textStyle,
+    FontWeight? textWeight,
+    double textSize = 18,
+    String? textFamily,
+    double paddingButton = 0,
+    double betweenItemSpacing = 0,
     double buttonHeight = 40,
     String? preIconUrl,
     List<BoxShadow>? boxShadow,
@@ -38,10 +42,14 @@ class ButtonPackage implements ButtonPackageInterface {
       textColor: textColor,
       disableBackgroundColor: disableBackgroundColor,
       disableTextColor: disableTextColor,
-      textStyle: textStyle,
+      textSize: textSize,
+      textFamily: textFamily,
+      textWeight: textWeight,
       isActive: isActive,
       boxShadow: boxShadow,
       borderRadius: borderRadius,
+      paddingButton: paddingButton,
+      betweenItemSpacing: betweenItemSpacing,
     );
   }
 
@@ -55,7 +63,9 @@ class ButtonPackage implements ButtonPackageInterface {
     bool isExpanedContent = false,
     Color disableBackgroundColor = ButtonPackage.defaultdisableBackgroundColor,
     Color disableTextColor = ButtonPackage.defaultdisableTextColor,
-    TextStyle? textStyle,
+    FontWeight? textWeight,
+    double textSize = 18,
+    String? textFamily,
     String? preIconUrl,
     double iconSize = 32,
     bool isDirection = false,
@@ -63,25 +73,32 @@ class ButtonPackage implements ButtonPackageInterface {
     double borderRadius = 0,
     double borderWidth = 1,
     Color? borderColor,
+    double paddingButton = 0,
+    double betweenItemSpacing = 0,
   }) {
     return BaseButton(
-        onPressed: onPressed,
-        title: title,
-        preIconUrl: preIconUrl,
-        iconSize: iconSize,
-        isDirection: isDirection,
-        isFixedWidth: isFixedWidth,
-        isExpanedContent: isExpanedContent,
-        buttonHeight: buttonHeight,
-        backgroundColor: Colors.transparent,
-        textColor: textColor,
-        isActive: isActive,
-        disableBackgroundColor: disableBackgroundColor,
-        disableTextColor: disableTextColor,
-        textStyle: textStyle,
-        borderWidth: borderWidth,
-        borderRadius: borderRadius,
-        borderColor: borderColor);
+      onPressed: onPressed,
+      title: title,
+      preIconUrl: preIconUrl,
+      iconSize: iconSize,
+      isDirection: isDirection,
+      isFixedWidth: isFixedWidth,
+      isExpanedContent: isExpanedContent,
+      buttonHeight: buttonHeight,
+      backgroundColor: Colors.transparent,
+      textColor: textColor,
+      isActive: isActive,
+      disableBackgroundColor: disableBackgroundColor,
+      disableTextColor: disableTextColor,
+      textSize: textSize,
+      textFamily: textFamily,
+      textWeight: textWeight,
+      borderWidth: borderWidth,
+      borderRadius: borderRadius,
+      borderColor: borderColor,
+      paddingButton: paddingButton,
+      betweenItemSpacing: betweenItemSpacing,
+    );
   }
 
   @override
@@ -89,13 +106,15 @@ class ButtonPackage implements ButtonPackageInterface {
     required VoidCallback onPressed,
     required String title,
     Color textColor = Colors.blue,
-    TextStyle? textStyle,
+    FontWeight? textWeight,
+    double textSize = 18,
+    String? textFamily,
     double iconSize = 32,
     bool isActive = true,
-    bool isFixedWidth = true,
     bool isExpanedContent = false,
     String? preIconUrl,
     Color disableTextColor = ButtonPackage.defaultdisableTextColor,
+    double betweenItemSpacing = 0,
   }) {
     return BaseButton(
       onPressed: onPressed,
@@ -103,13 +122,16 @@ class ButtonPackage implements ButtonPackageInterface {
       preIconUrl: preIconUrl,
       iconSize: iconSize,
       isActive: isActive,
-      isFixedWidth: isFixedWidth,
+      isFixedWidth: true,
       isExpanedContent: isExpanedContent,
       textColor: Colors.blue,
-      textStyle: textStyle,
+      textSize: textSize,
+      textFamily: textFamily,
+      textWeight: textWeight,
       disableBackgroundColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       disableTextColor: disableTextColor,
+      betweenItemSpacing: betweenItemSpacing,
     );
   }
 }
@@ -125,7 +147,6 @@ class BaseButton extends StatelessWidget {
     this.isActive = true,
     this.disableBackgroundColor = ButtonPackage.defaultdisableBackgroundColor,
     this.disableTextColor = ButtonPackage.defaultdisableTextColor,
-    this.textStyle,
     this.iconSize = 32,
     this.buttonHeight = 40,
     this.borderRadius = 0,
@@ -135,7 +156,13 @@ class BaseButton extends StatelessWidget {
     this.boxShadow,
     this.isFixedWidth = false,
     this.isExpanedContent = false,
+    this.betweenItemSpacing = 0,
+    this.paddingButton = 0,
+    this.textWeight,
+    this.textSize = 18,
+    this.textFamily,
   })  : assert(iconSize <= buttonHeight * 0.8),
+        assert(textSize <= buttonHeight * 0.6),
         assert(preIconUrl == null || isDirection == false),
         super(key: key);
 
@@ -149,7 +176,6 @@ class BaseButton extends StatelessWidget {
   final Color disableBackgroundColor;
   final Color disableTextColor;
   final bool isActive;
-  final TextStyle? textStyle;
   final double? borderRadius;
   final double? borderWidth;
   final Color? borderColor;
@@ -157,6 +183,11 @@ class BaseButton extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final bool isFixedWidth;
   final bool isExpanedContent;
+  final double betweenItemSpacing;
+  final double paddingButton;
+  final FontWeight? textWeight;
+  final double textSize;
+  final String? textFamily;
 
   @override
   Widget build(BuildContext context) {
@@ -179,43 +210,56 @@ class BaseButton extends StatelessWidget {
               : null,
           backgroundColor: isActive ? backgroundColor : disableBackgroundColor,
         ),
-        child: Row(
-                mainAxisAlignment: isExpanedContent ? MainAxisAlignment.spaceBetween: MainAxisAlignment.center,
-                mainAxisSize: !isFixedWidth ? MainAxisSize.max : MainAxisSize.min,
-                children: [
-                  preIconUrl != null ?
-                    _split(preIconUrl!) == "svg"
-                        ? SvgPicture.asset(
-                            preIconUrl!,
-                            color: isActive ? textColor : disableTextColor,
-                            height: iconSize,
-                          )
-                        : Image.asset(
-                            preIconUrl!,
-                            color: isActive ? textColor : disableTextColor,
-                            height: iconSize,
-                            fit: BoxFit.fill,
-                          ) : ( !isFixedWidth ? Container(width: iconSize) : Container()),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Text(title,
-                          style: textStyle ??
-                              TextStyle(
-                                  fontSize: 18,
-                                  color:
-                                      isActive ? textColor : disableTextColor,
-                                  fontWeight: FontWeight.w500))),
-                  isDirection ?
-                    Align(
-                      alignment: Alignment.center,
-                      child: Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: isActive ? textColor : disableTextColor,
-                        size: iconSize,
-                      ),
-                    ): (!isFixedWidth ? Container(width: iconSize,) : Container())
-                ],
-              ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: paddingButton),
+          child: Row(
+            mainAxisAlignment: isExpanedContent
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.center,
+            mainAxisSize: !isFixedWidth ? MainAxisSize.max : MainAxisSize.min,
+            children: [
+              preIconUrl != null
+                  ? _split(preIconUrl!) == "svg"
+                      ? SvgPicture.asset(
+                          preIconUrl!,
+                          color: isActive ? textColor : disableTextColor,
+                          height: iconSize,
+                        )
+                      : Image.asset(
+                          preIconUrl!,
+                          color: isActive ? textColor : disableTextColor,
+                          height: iconSize,
+                          fit: BoxFit.fill,
+                        )
+                  : (!isFixedWidth ? Container(width: iconSize) : Container()),
+              Padding(
+                  padding: EdgeInsets.only(
+                      left: isExpanedContent
+                          ? 0
+                          : (preIconUrl != null ? betweenItemSpacing : (isFixedWidth ? 0 : betweenItemSpacing)),
+                      right: isExpanedContent
+                          ? 0
+                          : (isDirection ? betweenItemSpacing : (isFixedWidth ? 0 : betweenItemSpacing))),
+                  child: Text(title,
+                      style: TextStyle(
+                          fontSize: textSize,
+                          color: isActive ? textColor : disableTextColor,
+                          fontFamily: textFamily,
+                          fontWeight: textWeight ?? FontWeight.w500))),
+              isDirection
+                  ? Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: isActive ? textColor : disableTextColor,
+                      size: iconSize,
+                    )
+                  : (!isFixedWidth
+                      ? Container(
+                          width: iconSize,
+                        )
+                      : Container())
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -225,4 +269,3 @@ String _split(String url) {
   final split = url.split('.');
   return split.last;
 }
-

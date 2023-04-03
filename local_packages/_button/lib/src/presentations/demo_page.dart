@@ -6,7 +6,6 @@ class ButtonPackageDemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: const Text('Button')),
       backgroundColor: Colors.white,
@@ -17,33 +16,38 @@ class ButtonPackageDemoPage extends StatelessWidget {
           children: [
             ButtonPackage().primary(
               buttonHeight: 50,
-              iconSize: 23,
-              isDirection: true,
+              iconSize: 36,
               isExpanedContent: true,
-              //isFixedWidth: true,
-              //isActive: false,
+              paddingButton: 20,
+              betweenItemSpacing: 10,
               onPressed: () {},
-              title: 'BUTTON',
-              //iconColor: Colors.white,
-              //preIconUrl: "assets/icons/home_line.png",
-            ),
-            const SizedBox(
-              height: 32,
-            ),
-            ButtonPackage().primary(
-              buttonHeight: 50,
-              iconSize: 23,
-              //isDirection: true,
-              //isExpanedContent: true,
-              //isFixedWidth: true,
-              //isActive: false,
-              onPressed: () {},
-              title: 'BUTTON',
-              //iconColor: Colors.white,
+              title: 'EXPANED CONTENT',
               preIconUrl: "assets/icons/home_line.png",
             ),
             const SizedBox(
-              height: 32,
+              height: 16,
+            ),
+            ButtonPackage().primary(
+              buttonHeight: 50,
+              iconSize: 36,
+              isDirection: true,
+              isExpanedContent: true,
+              betweenItemSpacing: 10,
+              onPressed: () {},
+              title: 'EXPANED CONTENT',
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            ButtonPackage().primary(
+              buttonHeight: 50,
+              betweenItemSpacing: 20,
+              onPressed: () {},
+              title: 'BUTTON',
+              preIconUrl: "assets/icons/home_line.png",
+            ),
+            const SizedBox(
+              height: 16,
             ),
             ButtonPackage().primary(
               //buttonHeight: 50,
@@ -52,64 +56,60 @@ class ButtonPackageDemoPage extends StatelessWidget {
               onPressed: () {},
               title: 'FIXED WIDTH',
               isFixedWidth: true,
+              betweenItemSpacing: 20,
               //iconColor: Colors.white,
               preIconUrl: "assets/icons/home_line.png",
             ),
             const SizedBox(
-              height: 32,
+              height: 12,
             ),
             ButtonPackage().primary(
-              //buttonHeight: 50,
-              //iconSize: 23,
-              //isDirection: true,
+              betweenItemSpacing: 10,
               isActive: false,
               onPressed: () {},
-              title: 'BUTTON',
+              title: 'DISABLE BUTTON',
               //iconColor: Colors.white,
               preIconUrl: "assets/icons/home_line.png",
             ),
             const SizedBox(
-              height: 32,
+              height: 16,
             ),
             ButtonPackage().secondary(
-                onPressed: () {},
-                title: 'BUTTON',
-                buttonHeight: 56,
-                //isActive: false,
-                iconSize: 32,
-                isDirection: true,
-                //iconColor: Colors.red[300],
-                //preIconUrl: "assets/icons/photo.svg"
+              onPressed: () {},
+              title: 'BUTTON',
+              buttonHeight: 56,
+              iconSize: 32,
+              isDirection: true,
+              borderRadius: 8,
+              isExpanedContent: true
             ),
             const SizedBox(
-              height: 32,
+              height: 16,
             ),
             ButtonPackage().secondary(
-                onPressed: () {},
-                title: 'BUTTON',
-                buttonHeight: 56,
-                isActive: false,
-                iconSize: 32,
-                isDirection: true,
-                //iconColor: Colors.red[300],
-                //preIconUrl: "assets/icons/photo.svg"
+              onPressed: () {},
+              title: 'DISABLE BUTTON',
+              buttonHeight: 56,
+              isActive: false,
+              iconSize: 32,
+              isDirection: true,
             ),
             const SizedBox(
-              height: 32,
+              height: 16,
             ),
             ButtonPackage().text(
                 onPressed: () {},
-                title: 'BUTTON',
+                title: 'TEXTBUTTON',
                 isActive: true,
-                
                 iconSize: 32,
                 preIconUrl: "assets/icons/login.svg"),
             const SizedBox(
-              height: 32,
+              height: 16,
             ),
             ButtonPackage().text(
                 onPressed: () {},
-                title: 'BUTTON',
+                betweenItemSpacing: 10,
+                title: 'DISABLE TEXTBUTTON',
                 disableTextColor: Colors.grey,
                 isActive: false,
                 iconSize: 32,
