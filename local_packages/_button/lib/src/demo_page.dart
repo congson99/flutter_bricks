@@ -1,5 +1,6 @@
-import 'package:_button/src/presentations/features_impl.dart';
 import 'package:flutter/material.dart';
+
+import 'button_package.dart';
 
 class ButtonPackageDemoPage extends StatelessWidget {
   const ButtonPackageDemoPage({super.key});
@@ -15,9 +16,10 @@ class ButtonPackageDemoPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ButtonPackage().primary(
-              buttonHeight: 50,
+              buttonHeight: 200,
               iconSize: 36,
-              isExpanedContent: true,
+              isExpandedContent: true,
+              borderRadius: 20,
               paddingButton: 20,
               betweenItemSpacing: 10,
               onPressed: () {},
@@ -30,8 +32,9 @@ class ButtonPackageDemoPage extends StatelessWidget {
             ButtonPackage().primary(
               buttonHeight: 50,
               iconSize: 36,
+              isFixedWidth: true,
               isDirection: true,
-              isExpanedContent: true,
+              isExpandedContent: true,
               betweenItemSpacing: 10,
               onPressed: () {},
               title: 'EXPANED CONTENT',
@@ -75,14 +78,13 @@ class ButtonPackageDemoPage extends StatelessWidget {
               height: 16,
             ),
             ButtonPackage().secondary(
-              onPressed: () {},
-              title: 'BUTTON',
-              buttonHeight: 56,
-              iconSize: 32,
-              isDirection: true,
-              borderRadius: 8,
-              isExpanedContent: true
-            ),
+                onPressed: () {},
+                title: 'BUTTON',
+                buttonHeight: 56,
+                iconSize: 32,
+                isDirection: true,
+                borderRadius: 8,
+                isExpanedContent: true),
             const SizedBox(
               height: 16,
             ),
