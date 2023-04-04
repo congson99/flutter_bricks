@@ -11,10 +11,10 @@ class BaseButton extends StatelessWidget {
     required this.content,
     this.preIconUrl,
     this.backgroundColor,
-    this.textColor,
+    this.contentColor,
     this.isActive = true,
     this.disableBackgroundColor = ButtonPackage.defaultdisableBackgroundColor,
-    this.disableTextColor = ButtonPackage.defaultdisableTextColor,
+    this.disableContentColor = ButtonPackage.defaultdisableTextColor,
     this.iconSize = 32,
     this.buttonHeight = 40,
     this.borderRadius = 0,
@@ -40,9 +40,9 @@ class BaseButton extends StatelessWidget {
   final double iconSize;
   final double buttonHeight;
   final Color? backgroundColor;
-  final Color? textColor;
+  final Color? contentColor;
   final Color disableBackgroundColor;
-  final Color disableTextColor;
+  final Color disableContentColor;
   final bool isActive;
   final double borderRadius;
   final double borderWidth;
@@ -70,7 +70,7 @@ class BaseButton extends StatelessWidget {
           shape: (RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
               side: BorderSide(
-                  color: borderColor ?? textColor!, width: borderWidth))),
+                  color: borderColor ?? contentColor!, width: borderWidth))),
           backgroundColor: isActive ? backgroundColor : disableBackgroundColor,
         ),
         child: Padding(
@@ -91,7 +91,7 @@ class BaseButton extends StatelessWidget {
               Text(content,
                   style: TextStyle(
                       fontSize: textSize,
-                      color: isActive ? textColor : disableTextColor,
+                      color: isActive ? contentColor : disableContentColor,
                       fontFamily: textFamily,
                       fontWeight: textWeight ?? FontWeight.w500)),
               SizedBox(
@@ -103,7 +103,7 @@ class BaseButton extends StatelessWidget {
               isDirection
                   ? Icon(
                       Icons.keyboard_arrow_right_rounded,
-                      color: isActive ? textColor : disableTextColor,
+                      color: isActive ? contentColor : disableContentColor,
                       size: iconSize,
                     )
                   : (!isFixedWidth
@@ -123,12 +123,12 @@ class BaseButton extends StatelessWidget {
       return (path.extension(preIconUrl!) == "svg"
           ? SvgPicture.asset(
               preIconUrl!,
-              color: isActive ? textColor : disableTextColor,
+              color: isActive ? contentColor : disableContentColor,
               height: iconSize,
             )
           : Image.asset(
               preIconUrl!,
-              color: isActive ? textColor : disableTextColor,
+              color: isActive ? contentColor : disableContentColor,
               height: iconSize,
               fit: BoxFit.fill,
             ));
