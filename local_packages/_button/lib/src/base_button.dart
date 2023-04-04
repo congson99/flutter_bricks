@@ -2,115 +2,104 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart' as path;
 
-import 'button_package.dart';
-
 class BaseButton extends StatelessWidget {
   const BaseButton({
     Key? key,
     required this.onPressed,
     required this.content,
-    this.preIconUrl,
-    this.backgroundColor,
-    this.contentColor,
-    this.isActive = true,
-    this.disableBackgroundColor = ButtonPackage.defaultdisableBackgroundColor,
-    this.disableContentColor = ButtonPackage.defaultdisableTextColor,
-    this.iconSize = 32,
-    this.buttonHeight = 40,
-    this.borderRadius = 0,
+    this.height = 48,
+    required this.textStyle,
+    this.textOverflow = TextOverflow.ellipsis,
+    this.maxLines = 1,
+    required this.contentColor,
+    required this.backgroundColor,
+    this.disable = false,
+    required this.disableContentColor,
+    required this.disableBackgroundColor,
+    this.isBorder = false,
+    this.borderRadius = 16,
     this.borderWidth = 1,
     this.borderColor,
-    this.isDirection = false,
     this.boxShadow,
+    this.preIconUrl,
+    this.iconSize = 24,
+    this.isDirection = false,
     this.isFixedWidth = false,
     this.isExpandedContent = false,
-    this.betweenItemSpacing = 0,
-    this.paddingButton = 0,
-    this.textWeight,
-    this.textSize = 18,
-    this.textFamily,
-  })  : assert(iconSize <= buttonHeight * 0.8),
-        assert(textSize <= buttonHeight * 0.6),
+    this.betweenItemSpacing = 8,
+    this.horizontalPadding = 0,
+    this.alignment = Alignment.center,
+  })  : assert(content != ""),
+        assert(height >= 32),
+        assert(iconSize < height),
         assert(preIconUrl == null || isDirection == false),
+        assert(alignment == Alignment.center ||
+            alignment == Alignment.centerLeft ||
+            alignment == Alignment.centerRight),
+        assert(alignment != Alignment.centerLeft || preIconUrl == null),
+        assert(alignment != Alignment.centerRight || isDirection == false),
         super(key: key);
 
   final VoidCallback onPressed;
   final String content;
-  final String? preIconUrl;
-  final double iconSize;
-  final double buttonHeight;
-  final Color? backgroundColor;
-  final Color? contentColor;
-  final Color disableBackgroundColor;
+  final double height;
+  final TextStyle textStyle;
+  final TextOverflow textOverflow;
+  final int maxLines;
+  final Color contentColor;
+  final Color backgroundColor;
+  final bool disable;
   final Color disableContentColor;
-  final bool isActive;
+  final Color disableBackgroundColor;
+  final bool isBorder;
   final double borderRadius;
   final double borderWidth;
   final Color? borderColor;
-  final bool isDirection;
   final List<BoxShadow>? boxShadow;
+  final String? preIconUrl;
+  final double iconSize;
+  final bool isDirection;
   final bool isFixedWidth;
   final bool isExpandedContent;
   final double betweenItemSpacing;
-  final double paddingButton;
-  final FontWeight? textWeight;
-  final double textSize;
-  final String? textFamily;
+  final double horizontalPadding;
+  final Alignment alignment;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: buttonHeight,
-      decoration: BoxDecoration(
-        boxShadow: boxShadow,
-      ),
+      height: height,
+      decoration: BoxDecoration(boxShadow: disable ? null : boxShadow),
       child: TextButton(
-        onPressed: isActive ? onPressed : null,
+        onPressed: disable ? null : onPressed,
         style: TextButton.styleFrom(
           shape: (RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
-              side: BorderSide(
-                  color: borderColor ?? contentColor!, width: borderWidth))),
-          backgroundColor: isActive ? backgroundColor : disableBackgroundColor,
+              side: isBorder
+                  ? BorderSide(
+                      color: disable
+                          ? disableContentColor
+                          : (borderColor ?? contentColor),
+                      width: borderWidth)
+                  : BorderSide.none)),
+          backgroundColor: disable ? disableBackgroundColor : backgroundColor,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: paddingButton),
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
           child: Row(
             mainAxisAlignment: isExpandedContent
                 ? MainAxisAlignment.spaceBetween
                 : MainAxisAlignment.center,
-            mainAxisSize: !isFixedWidth ? MainAxisSize.max : MainAxisSize.min,
+            mainAxisSize: isFixedWidth ? MainAxisSize.min : MainAxisSize.max,
             children: [
-              buildPreIcon(),
-              SizedBox(
-                  width: isExpandedContent
-                      ? 0
-                      : (preIconUrl != null
-                          ? betweenItemSpacing
-                          : (isFixedWidth ? 0 : betweenItemSpacing))),
-              Text(content,
-                  style: TextStyle(
-                      fontSize: textSize,
-                      color: isActive ? contentColor : disableContentColor,
-                      fontFamily: textFamily,
-                      fontWeight: textWeight ?? FontWeight.w500)),
-              SizedBox(
-                  width: isExpandedContent
-                      ? 0
-                      : (isDirection
-                          ? betweenItemSpacing
-                          : (isFixedWidth ? 0 : betweenItemSpacing))),
-              isDirection
-                  ? Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: isActive ? contentColor : disableContentColor,
-                      size: iconSize,
-                    )
-                  : (!isFixedWidth
-                      ? Container(
-                          width: iconSize,
-                        )
-                      : Container())
+              if (alignment != Alignment.centerLeft) buildPreIcon(),
+              if (alignment != Alignment.centerLeft) buildPreFixSpacing(),
+              if (isExpandedContent)
+                Expanded(child: buildTextContent())
+              else
+                buildTextContent(),
+              if (alignment != Alignment.centerRight) buildSufFixSpacing(),
+              if (alignment != Alignment.centerRight) buildDirection()
             ],
           ),
         ),
@@ -118,22 +107,60 @@ class BaseButton extends StatelessWidget {
     );
   }
 
+  Widget buildTextContent() {
+    return Text(content,
+        overflow: textOverflow,
+        maxLines: maxLines,
+        textAlign: TextAlign.center,
+        style: textStyle.copyWith(
+            color: disable ? disableContentColor : contentColor));
+  }
+
   Widget buildPreIcon() {
     if (preIconUrl != null) {
-      return (path.extension(preIconUrl!) == "svg"
+      return (path.extension(preIconUrl!) == ".svg"
           ? SvgPicture.asset(
               preIconUrl!,
-              color: isActive ? contentColor : disableContentColor,
+              color: disable ? disableContentColor : contentColor,
               height: iconSize,
+              width: iconSize,
+              fit: BoxFit.contain,
             )
           : Image.asset(
               preIconUrl!,
-              color: isActive ? contentColor : disableContentColor,
+              color: disable ? disableContentColor : contentColor,
               height: iconSize,
-              fit: BoxFit.fill,
+              width: iconSize,
+              fit: BoxFit.contain,
             ));
     }
-    if (!isFixedWidth) return Container(width: iconSize);
+    if (!isFixedWidth && isExpandedContent) return SizedBox(width: iconSize);
+    return const SizedBox.shrink();
+  }
+
+  Widget buildDirection() {
+    if (isDirection) {
+      return Icon(
+        Icons.chevron_right,
+        color: disable ? disableContentColor : contentColor,
+        size: iconSize,
+      );
+    }
+    if (!isFixedWidth && isExpandedContent) return SizedBox(width: iconSize);
+    return const SizedBox.shrink();
+  }
+
+  Widget buildPreFixSpacing() {
+    if (preIconUrl != null || (isFixedWidth == false && isDirection == true)) {
+      return SizedBox(width: betweenItemSpacing);
+    }
+    return const SizedBox.shrink();
+  }
+
+  Widget buildSufFixSpacing() {
+    if (isDirection || (isFixedWidth == false && preIconUrl != null)) {
+      return SizedBox(width: betweenItemSpacing);
+    }
     return const SizedBox.shrink();
   }
 }
