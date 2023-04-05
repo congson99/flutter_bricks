@@ -1,6 +1,6 @@
 # Bricks
 
-## Packages for Flutter
+### Packages for Flutter
 
 | Brick                      | Description                                           | Type     | Version | 
 |:---------------------------|:------------------------------------------------------|:---------|:--------|
