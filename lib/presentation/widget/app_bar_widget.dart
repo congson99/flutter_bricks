@@ -1,7 +1,7 @@
 import 'package:bricks/util/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 
-const double _height = 64;
+const double _height = 56;
 const double horizontalMargin = 16;
 
 class AppBarWidget extends StatelessWidget {

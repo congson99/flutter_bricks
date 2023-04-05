@@ -23,7 +23,7 @@ class InfoPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const SizedBox(height: 24),
-                    Text("${brick.name} (v${brick.version})",
+                    Text("[${brick.id}] ${brick.name} (v${brick.version})",
                         style: BaseTextStyle.subtitle1()),
                     const SizedBox(height: 24),
                     Text(brick.description, style: BaseTextStyle.label()),

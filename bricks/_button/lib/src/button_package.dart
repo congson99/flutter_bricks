@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'base_button.dart';
 
-class ButtonPackage {
+class ButtonBrick {
   Widget base({
     required VoidCallback onPressed,
     required String content,
