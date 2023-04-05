@@ -40,7 +40,10 @@ class BaseTextStyle {
     return TextStyle(fontSize: 12, color: color ?? Colors.black);
   }
 
-  static TextStyle button(){
-    return const TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w500);
+  static TextStyle button({Color? color}) {
+    return TextStyle(
+        fontSize: 16,
+        color: color ?? Colors.black,
+        fontWeight: FontWeight.w500);
   }
 }

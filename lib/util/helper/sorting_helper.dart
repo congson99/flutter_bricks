@@ -1,8 +1,8 @@
-import 'package:bricks/data/models/local_package_model.dart';
+import 'package:bricks/data/model/brick.dart';
 
 class SortingHelper {
-  static List<LocalPackage> localPackageByName(List<LocalPackage> resource) {
-    List<LocalPackage> result = [];
+  static List<Brick> brickByName(List<Brick> resource) {
+    List<Brick> result = [];
     for (var element in resource) {
       result.add(element);
     }

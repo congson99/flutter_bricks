@@ -1,5 +1,4 @@
-import 'package:bricks/presentations/dashboard_page.dart';
-import 'package:bricks/utils/style/base_theme.dart';
+import 'package:bricks/presentation/page/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: baseTheme(),
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
+      ),
       home: buildSystemUiOverlay(),
     );
   }
