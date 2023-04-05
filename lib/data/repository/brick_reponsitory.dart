@@ -1,5 +1,7 @@
+import 'package:bricks/brick/button/difinition.dart';
+import 'package:bricks/brick/file/difinition.dart';
+import 'package:bricks/brick/photo/difinition.dart';
 import 'package:bricks/data/model/brick_group.dart';
-import 'package:bricks/data/model/package_definitions.dart';
 
 abstract class BrickRepositoryInterface {
   List<BrickGroup> getAllBrickGroup();
@@ -29,9 +31,9 @@ class BrickRepository implements BrickRepositoryInterface {
   @override
   BrickGroup getObjectBricks() {
     return BrickGroup(name: "Object", bricks: [
-      FileLocalPackage(),
-      PhotoPackage(),
-      ButtonPackage(),
+      FileBrick(),
+      PhotoBrick(),
+      ButtonBrick(),
     ]);
   }
 
