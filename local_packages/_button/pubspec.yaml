@@ -1,6 +1,6 @@
-name: _file
-description: File Handler
-version: 1.0.0
+name: _button
+description: A new Flutter package project.
+version: 0.0.1
 publish_to: none
 
 environment:
@@ -10,9 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  file_picker: ^5.2.5
-  file_icon: ^1.0.0
-  open_filex: ^4.3.2
+  
+  flutter_svg: ^1.1.6
   path: ^1.8.2
 
 dev_dependencies:

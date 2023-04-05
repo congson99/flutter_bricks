@@ -8,6 +8,7 @@ final List<LocalPackage> featurePackages = [
 final List<LocalPackage> objectPackages = [
   FileLocalPackage(),
   PhotoPackage(),
+  ButtonPackage(),
 ];
 
 final List<LocalPackage> animationPackages = [
