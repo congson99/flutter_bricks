@@ -15,4 +15,6 @@ abstract class TinderSwipeInterface {
       {required int index,
       required Widget child,
       required BuildContext context});
+
+  Widget buttonArea({required int index});
 }

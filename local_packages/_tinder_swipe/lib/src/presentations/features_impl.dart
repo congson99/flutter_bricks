@@ -88,4 +88,10 @@ class TinderSwipePackage extends TinderSwipeInterface {
       ),
     );
   }
+
+  @override
+  Widget buttonArea({required int index}) {
+    // TODO: implement buttonArea
+    throw UnimplementedError();
+  }
 }
