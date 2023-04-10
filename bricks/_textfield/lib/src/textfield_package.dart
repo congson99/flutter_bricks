@@ -1,13 +1,14 @@
-import 'package:_textfield/src/base_textfield.dart';
-import 'package:_textfield/src/base_textfield_item.dart';
-import 'package:_textfield/src/base_textfield_type2.dart';
+import 'package:_textfield/src/ios/ios_base_textfield_item.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart' as path;
 
+import 'common/common_base_textfield.dart';
+import 'ios/ios_base_textfield.dart';
+
 class TextfieldBrick {
-  static Widget type1({
+  static Widget common({
     required ValueChanged<String> onChanged,
     required String title,
     required String errorText,
@@ -52,7 +53,7 @@ class TextfieldBrick {
     double verticalItemSpacing = 8,
     double? textfieldWidth,
   }) {
-    return BaseTextfield(
+    return CommonBaseTextfield(
       onChanged: onChanged,
       title: title,
       errorText: errorText,
@@ -134,7 +135,7 @@ class TextfieldBrick {
     TextInputType? textInputType,
     double? textfieldWidth,
   }) {
-    return BaseTextfield(
+    return CommonBaseTextfield(
       onChanged: onChanged,
       textStyle: textStyle,
       hintStyle: hintStyle,
@@ -224,7 +225,7 @@ class TextfieldBrick {
     );
   }
 
-  static BaseTextfieldItem type2Item({
+  static IOSBaseTextfieldItem iOSItem({
     required ValueChanged<String> onChanged,
     ValueChanged<String>? onSubmit,
     required String title,
@@ -263,7 +264,7 @@ class TextfieldBrick {
     AlignmentGeometry? iconAlign,
     VoidCallback? onNavigationPressed,
   }) {
-    return BaseTextfieldItem(
+    return IOSBaseTextfieldItem(
       onChanged: onChanged,
       title: title,
       backgroundColor: backgroundColor,
@@ -304,7 +305,7 @@ class TextfieldBrick {
     );
   }
 
-  static Widget type2({
+  static Widget iOS({
     required String groupTitle,
     required TextStyle groupTitleStyle,
     required String errorText,
@@ -315,10 +316,10 @@ class TextfieldBrick {
     EdgeInsets? groupTitlePadding,
     EdgeInsets? descriptionPadding,
     EdgeInsets? errorTextPadding,
-    required List<BaseTextfieldItem> items,
+    required List<IOSBaseTextfieldItem> items,
     bool isValid = true,
   }) {
-    return BaseTextfieldType2(
+    return IOSBaseTextfield(
         groupTitle: groupTitle,
         groupTitlePadding: groupTitlePadding,
         borderRadius: borderRadius,

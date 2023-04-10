@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'base_textfield_item.dart';
+import 'ios_base_textfield_item.dart';
 
-class BaseTextfieldType2 extends StatelessWidget {
-  const BaseTextfieldType2({
+class IOSBaseTextfield extends StatelessWidget {
+  const IOSBaseTextfield({
     super.key,
     required this.groupTitle,
     required this.errorText,
@@ -29,7 +29,7 @@ class BaseTextfieldType2 extends StatelessWidget {
   final EdgeInsets? groupTitlePadding;
   final EdgeInsets? descriptionPadding;
   final EdgeInsets? errorTextPadding;
-  final List<BaseTextfieldItem> items;
+  final List<IOSBaseTextfieldItem> items;
   final bool isValid;
 
   @override
@@ -61,8 +61,7 @@ class BaseTextfieldType2 extends StatelessWidget {
           ),
         ),
         buildText(description, descriptionStyle, descriptionPadding),
-        if (!isValid)
-          buildText(errorText, errorStyle, errorTextPadding),
+        if (!isValid) buildText(errorText, errorStyle, errorTextPadding),
       ],
     );
   }

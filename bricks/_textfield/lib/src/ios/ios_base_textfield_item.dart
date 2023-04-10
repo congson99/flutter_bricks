@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BaseTextfieldItem extends StatelessWidget {
-  const BaseTextfieldItem({
+class IOSBaseTextfieldItem extends StatelessWidget {
+  const IOSBaseTextfieldItem({
     super.key,
     required this.onChanged,
     this.onSubmit,

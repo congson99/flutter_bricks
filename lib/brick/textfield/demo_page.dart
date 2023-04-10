@@ -77,7 +77,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type1(
+                  TextfieldBrick.common(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -116,7 +116,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type1(
+                  TextfieldBrick.common(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -147,7 +147,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type1(
+                  TextfieldBrick.common(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -196,7 +196,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type2Item(
+                  TextfieldBrick.iOSItem(
                     onChanged: (value) {},
                     title: 'Title',
                     hintText: 'Text',
@@ -219,7 +219,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type2Item(
+                  TextfieldBrick.iOSItem(
                     onChanged: (value) {},
                     title: 'Title',
                     hintText: 'Text',
@@ -242,10 +242,10 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextfieldBrick.type2(
+                  TextfieldBrick.iOS(
                     groupTitle: 'Group Title',
                     items: [
-                      TextfieldBrick.type2Item(
+                      TextfieldBrick.iOSItem(
                         onChanged: (value) {},
                         title: 'Tên người dùng',
                         hintText: 'Nhập tên của bạn',
@@ -265,7 +265,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                         // readOnly: true,
                         //enable: false,
                       ),
-                      TextfieldBrick.type2Item(
+                      TextfieldBrick.iOSItem(
                         onChanged: (value) {},
                         title: 'Số điện thoại',
                         hintText: 'Nhập số điện thoại của bạn',
@@ -292,7 +292,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                         // readOnly: true,
                         //enable: false,
                       ),
-                      TextfieldBrick.type2Item(
+                      TextfieldBrick.iOSItem(
                         onChanged: (value) {},
                         title: 'Khu vực',
                         hintText: 'Chọn khu vực',

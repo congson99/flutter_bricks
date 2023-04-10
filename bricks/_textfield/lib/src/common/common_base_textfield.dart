@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart' as path;
 
-class BaseTextfield extends StatelessWidget {
-  const BaseTextfield({
+class CommonBaseTextfield extends StatelessWidget {
+  const CommonBaseTextfield({
     super.key,
     required this.onChanged,
     this.onSubmit,
@@ -104,8 +104,13 @@ class BaseTextfield extends StatelessWidget {
       children: [
         buildTitle(),
         Container(
+          /// TODO: Tại sao phải có margin
           margin: EdgeInsets.symmetric(vertical: verticalItemSpacing),
           decoration: BoxDecoration(
+
+              /// TODO: Shadow không bắt buộc
+              /// Chỉ cần truyền vào có hay ko có shadow. Không quan tâm enable,focusNode,...
+              /// Xem lại UI trong figma
               boxShadow: enable
                   ? ((focusNode != null
                       ? (focusNode!.hasFocus
@@ -113,6 +118,8 @@ class BaseTextfield extends StatelessWidget {
                           : shadow)
                       : shadow))
                   : null),
+
+          /// TODO: Không cần width
           width: textfieldWidth,
           child: TextFormField(
               enabled: enable,
@@ -146,6 +153,8 @@ class BaseTextfield extends StatelessWidget {
                   borderSide:
                       const BorderSide(style: BorderStyle.none, width: 0),
                 ),
+
+                /// TODO: Cần rất nhiều border state khác nhau. Tham khảo source Sikico
                 focusedBorder: isSearch
                     ? OutlineInputBorder(
                         borderRadius: borderRadius ?? BorderRadius.circular(16),
@@ -157,8 +166,8 @@ class BaseTextfield extends StatelessWidget {
                             width: focusBorderWidth ?? 1),
                         borderRadius:
                             borderRadius ?? BorderRadius.circular(16)),
-                prefixIcon: buildIcon(prefixIconPath,onPrefixIconTap),
-                suffixIcon: buildIcon(suffixIconPath,onSuffixIconTap),
+                prefixIcon: buildIcon(prefixIconPath, onPrefixIconTap),
+                suffixIcon: buildIcon(suffixIconPath, onSuffixIconTap),
               )),
         ),
         buildErrorText(),
@@ -170,17 +179,15 @@ class BaseTextfield extends StatelessWidget {
     if (title != null) {
       return Row(
         children: [
+          /// TODO: Dùng rich text. Không dùng row
           Text(title!,
               style: enable
                   ? titleStyle
                   : titleStyle!.copyWith(color: disableTextColor)),
-          const SizedBox(
-            width: 8,
-          ),
-          const Text(
-            '*',
-            style: TextStyle(color: Colors.red),
-          )
+          const SizedBox(width: 8),
+
+          /// TODO: "*" không bắt buộc. Truyền vào param required
+          const Text('*', style: TextStyle(color: Colors.red))
         ],
       );
     }
@@ -188,6 +195,8 @@ class BaseTextfield extends StatelessWidget {
   }
 
   Widget buildErrorText() {
+    /// TODO: Chỉ cần truyền errorText là đủ r. isValid bị dư
+    /// !enable thì vẫn có Err bình thường đâu có sao đâu
     if (!isValid && enable) {
       if (errorText != null) {
         return Align(
@@ -204,7 +213,7 @@ class BaseTextfield extends StatelessWidget {
     return const SizedBox.shrink();
   }
 
-  Widget buildIcon(String? url,VoidCallback? onPressed) {
+  Widget buildIcon(String? url, VoidCallback? onPressed) {
     if (url != null) {
       return IconButton(
         icon: path.extension(url) == ".svg"
