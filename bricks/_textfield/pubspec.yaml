@@ -13,6 +13,8 @@ dependencies:
   
   flutter_svg: ^1.1.6
   path: ^1.8.2
+  animated_text_kit: ^4.2.2
+
 
 dev_dependencies:
   flutter_test:

@@ -6,7 +6,7 @@ class BaseTextfieldItem extends StatelessWidget {
     required this.onChanged,
     this.onSubmit,
     required this.title,
-    this.hintText,
+    required this.hintText,
     this.initialValue,
     this.isObscured = false,
     this.enable = true,
@@ -45,7 +45,7 @@ class BaseTextfieldItem extends StatelessWidget {
   final ValueChanged<String> onChanged;
   final ValueChanged<String>? onSubmit;
   final String title;
-  final String? hintText;
+  final String hintText;
   final bool isValid;
   final String? initialValue;
   final bool isObscured;

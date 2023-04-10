@@ -3,14 +3,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart' as path;
 
 class BaseTextfield extends StatelessWidget {
-
   const BaseTextfield({
     super.key,
     required this.onChanged,
     this.onSubmit,
-    required this.title,
+    this.isSearch = false,
+    this.title,
     this.hintText,
-    required this.errorText,
+    this.errorText,
     this.initialValue,
     this.isObscured = false,
     this.enable = true,
@@ -27,7 +27,7 @@ class BaseTextfield extends StatelessWidget {
     this.backgroundColor,
     this.readOnly = false,
     required this.textStyle,
-    required this.hintStyle,
+    this.hintStyle,
     this.textAlign = TextAlign.start,
     this.textAlignVertical = TextAlignVertical.center,
     this.textInputAction,
@@ -41,8 +41,8 @@ class BaseTextfield extends StatelessWidget {
     this.textInputType,
     this.verticalItemSpacing = 8,
     this.textfieldWidth,
-    required this.errorStyle,
-    required this.titleStyle,
+    this.errorStyle,
+    this.titleStyle,
     required this.disableTextColor,
     required this.disableBackgroundColor,
     this.iconColor,
@@ -51,11 +51,13 @@ class BaseTextfield extends StatelessWidget {
     this.errorShadow,
   });
 
+  final bool isSearch;
+
   final ValueChanged<String> onChanged;
   final ValueChanged<String>? onSubmit;
-  final String title;
+  final String? title;
   final String? hintText;
-  final String errorText;
+  final String? errorText;
   final Color errorBorderColor;
   final List<BoxShadow>? errorShadow;
   final bool isValid;
@@ -75,9 +77,9 @@ class BaseTextfield extends StatelessWidget {
   final Color? backgroundColor;
   final bool readOnly;
   final TextStyle textStyle;
-  final TextStyle hintStyle;
-  final TextStyle errorStyle;
-  final TextStyle titleStyle;
+  final TextStyle? hintStyle;
+  final TextStyle? errorStyle;
+  final TextStyle? titleStyle;
   final TextAlign textAlign;
   final TextAlignVertical textAlignVertical;
   final TextInputAction? textInputAction;
@@ -133,24 +135,30 @@ class BaseTextfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: enable
-                    ? (backgroundColor ?? Colors.white)
+                    ? (backgroundColor ?? Colors.transparent)
                     : (disableBackgroundColor),
                 hintStyle: hintStyle,
                 hintText: hintText,
                 contentPadding: contentPadding ??
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: OutlineInputBorder(
-                  borderRadius: borderRadius ?? BorderRadius.circular(16.0),
+                  borderRadius: borderRadius ?? BorderRadius.circular(16),
                   borderSide:
                       const BorderSide(style: BorderStyle.none, width: 0),
                 ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                        color: isValid ? focusBorderColor : errorBorderColor,
-                        width: focusBorderWidth ?? 1),
-                    borderRadius: borderRadius ?? BorderRadius.circular(16)),
-                prefixIcon: buildIcon(prefixIconPath),
-                suffixIcon: buildIcon(suffixIconPath),
+                focusedBorder: isSearch
+                    ? OutlineInputBorder(
+                        borderRadius: borderRadius ?? BorderRadius.circular(16),
+                        borderSide: const BorderSide(color: Colors.transparent))
+                    : OutlineInputBorder(
+                        borderSide: BorderSide(
+                            color:
+                                isValid ? focusBorderColor : errorBorderColor,
+                            width: focusBorderWidth ?? 1),
+                        borderRadius:
+                            borderRadius ?? BorderRadius.circular(16)),
+                prefixIcon: buildIcon(prefixIconPath,onPrefixIconTap),
+                suffixIcon: buildIcon(suffixIconPath,onSuffixIconTap),
               )),
         ),
         buildErrorText(),
@@ -159,33 +167,36 @@ class BaseTextfield extends StatelessWidget {
   }
 
   Widget buildTitle() {
-    return Row(
-      children: [
-        Text(title,
-            style: enable
-                ? titleStyle
-                : titleStyle.copyWith(color: disableTextColor)),
-        const SizedBox(
-          width: 8,
-        ),
-        const Text(
-          '*',
-          style: TextStyle(color: Colors.red),
-        )
-      ],
-    );
+    if (title != null) {
+      return Row(
+        children: [
+          Text(title!,
+              style: enable
+                  ? titleStyle
+                  : titleStyle!.copyWith(color: disableTextColor)),
+          const SizedBox(
+            width: 8,
+          ),
+          const Text(
+            '*',
+            style: TextStyle(color: Colors.red),
+          )
+        ],
+      );
+    }
+    return const SizedBox.shrink();
   }
 
   Widget buildErrorText() {
     if (!isValid && enable) {
-      if (errorText != '') {
+      if (errorText != null) {
         return Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            errorText,
+            errorText!,
             style: enable
                 ? errorStyle
-                : errorStyle.copyWith(color: disableTextColor),
+                : errorStyle!.copyWith(color: disableTextColor),
           ),
         );
       }
@@ -193,7 +204,7 @@ class BaseTextfield extends StatelessWidget {
     return const SizedBox.shrink();
   }
 
-  Widget buildIcon(String? url) {
+  Widget buildIcon(String? url,VoidCallback? onPressed) {
     if (url != null) {
       return IconButton(
         icon: path.extension(url) == ".svg"
@@ -211,7 +222,7 @@ class BaseTextfield extends StatelessWidget {
                 width: iconSize,
                 fit: BoxFit.contain,
               ),
-        onPressed: onSuffixIconTap,
+        onPressed: onPressed,
       );
     }
     return const SizedBox.shrink();

@@ -8,8 +8,7 @@ class TextfieldBrickDemoPage extends StatefulWidget {
   final String brickName;
 
   @override
-  State<TextfieldBrickDemoPage> createState() =>
-      _TextfieldBrickDemoPageState();
+  State<TextfieldBrickDemoPage> createState() => _TextfieldBrickDemoPageState();
 }
 
 class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
@@ -17,6 +16,14 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
 
   late FocusNode focusNode1;
   late FocusNode focusNode2;
+
+  bool isSearching = false;
+
+  Future<void> onSearch() async {
+    setState(() {
+      isSearching = true;
+    });
+  }
 
   static const Color defaultdisableBackgroundColor = Color(0xfff8f8f8);
   static const Color defaultdisableTextColor = Color(0xff808080);
@@ -45,7 +52,32 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: ListView(
                 children: [
-                  BaseTextfield(
+                  !isSearching
+                      ? TextfieldBrick.animationSearch(
+                          onPressed: () {
+                            onSearch();
+                          },
+                          searchIconPath: "assets/icons/ic_search.svg",
+                          animationTextStype: const TextStyle(
+                              color: Colors.black, fontSize: 18),
+                          animationText: 'Tìm kiếm chức năng',
+                          backgroundColor: Colors.white,
+                          iconColor: Colors.black)
+                      : TextfieldBrick.search(
+                          onChanged: (value) {},
+                          autoFocus: true,
+                          borderRadius: BorderRadius.circular(12),
+                          prefixIconPath: "assets/icons/ic_search.svg",
+                          hintText: 'Tìm kiếm chức năng',
+                          backgroundColor: Colors.white,
+                          textStyle: const TextStyle(fontSize: 18),
+                          hintStyle: const TextStyle(fontSize: 18),
+                          disableTextColor: Colors.black,
+                          disableBackgroundColor: Colors.grey),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  TextfieldBrick.type1(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -84,7 +116,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  BaseTextfield(
+                  TextfieldBrick.type1(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -115,7 +147,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  BaseTextfield(
+                  TextfieldBrick.type1(
                     onChanged: (value) {},
                     title: 'Label',
                     errorText: 'Error text',
@@ -153,7 +185,8 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                       ),
                     ],
                     borderRadius: BorderRadius.circular(16),
-                    errorStyle: const TextStyle(fontSize: 18, color: Colors.red),
+                    errorStyle:
+                        const TextStyle(fontSize: 18, color: Colors.red),
                     textStyle: const TextStyle(fontSize: 18),
                     hintStyle: const TextStyle(fontSize: 18),
                     titleStyle: const TextStyle(fontSize: 18),
@@ -163,53 +196,76 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   const SizedBox(
                     height: 16,
                   ),
-                  BaseTextfieldItem(
+                  TextfieldBrick.type2Item(
                     onChanged: (value) {},
                     title: 'Title',
                     hintText: 'Text',
                     // maxLength: 20,
-                    textStyle: const TextStyle(fontSize: 16,),
-                    hintStyle: const TextStyle(fontSize: 16,),
-                    titleStyle: const TextStyle(fontSize: 12,),
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                    hintStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                    titleStyle: const TextStyle(
+                      fontSize: 12,
+                    ),
                     disableBackgroundColor: defaultdisableBackgroundColorType2,
                     disableTextColor: defaultdisableTextColorType2,
                     backgroundColor: Colors.white,
                     //eadOnly: true,
                     //enable: false,
                   ),
-                  const SizedBox(height: 16,),
-                  BaseTextfieldItem(
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  TextfieldBrick.type2Item(
                     onChanged: (value) {},
                     title: 'Title',
                     hintText: 'Text',
                     // maxLength: 20,
-                    textStyle: const TextStyle(fontSize: 16,),
-                    hintStyle: const TextStyle(fontSize: 16,),
-                    titleStyle: const TextStyle(fontSize: 12,),
+                    textStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                    hintStyle: const TextStyle(
+                      fontSize: 16,
+                    ),
+                    titleStyle: const TextStyle(
+                      fontSize: 12,
+                    ),
                     disableBackgroundColor: defaultdisableBackgroundColorType2,
                     disableTextColor: defaultdisableTextColorType2,
                     backgroundColor: Colors.white,
                     //eadOnly: true,
                     enable: false,
                   ),
-                  const SizedBox(height: 16,),
-                  BaseTextfieldType2(
-                    groupTitle: 'Group Title', 
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  TextfieldBrick.type2(
+                    groupTitle: 'Group Title',
                     items: [
-                      BaseTextfieldItem(
+                      TextfieldBrick.type2Item(
                         onChanged: (value) {},
                         title: 'Tên người dùng',
                         hintText: 'Nhập tên của bạn',
-                        textStyle: const TextStyle(fontSize: 16,),
-                        hintStyle: const TextStyle(fontSize: 16,),
-                        titleStyle: const TextStyle(fontSize: 12,),
-                        disableBackgroundColor: defaultdisableBackgroundColorType2,
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        hintStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        titleStyle: const TextStyle(
+                          fontSize: 12,
+                        ),
+                        disableBackgroundColor:
+                            defaultdisableBackgroundColorType2,
                         disableTextColor: defaultdisableTextColorType2,
                         backgroundColor: Colors.white,
                         // readOnly: true,
                         //enable: false,
                       ),
-                      BaseTextfieldItem(
+                      TextfieldBrick.type2Item(
                         onChanged: (value) {},
                         title: 'Số điện thoại',
                         hintText: 'Nhập số điện thoại của bạn',
@@ -217,48 +273,63 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                         // iconSize: 20,
                         // enable: false,
                         // iconColor: Colors.blue,
-                        textStyle: const TextStyle(fontSize: 16,),
-                        hintStyle: const TextStyle(fontSize: 16,),
-                        titleStyle: const TextStyle(fontSize: 12,),
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        hintStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        titleStyle: const TextStyle(
+                          fontSize: 12,
+                        ),
                         // underLineColor: Colors.red,
                         // underBorderWidth: 2,
                         // focusUnderLineColor: Colors.amber,
-                        disableBackgroundColor: defaultdisableBackgroundColorType2,
+                        disableBackgroundColor:
+                            defaultdisableBackgroundColorType2,
                         disableTextColor: defaultdisableTextColorType2,
                         backgroundColor: Colors.white,
                         // readOnly: true,
                         //enable: false,
                       ),
-                      BaseTextfieldItem(
+                      TextfieldBrick.type2Item(
                         onChanged: (value) {},
                         title: 'Khu vực',
                         hintText: 'Chọn khu vực',
                         isNavigation: true,
-                        onNavigationPressed: (){},
+                        onNavigationPressed: () {},
                         iconColor: Colors.blue,
                         iconSize: 20,
-                        textStyle: const TextStyle(fontSize: 16,),
-                        hintStyle: const TextStyle(fontSize: 16,),
-                        titleStyle: const TextStyle(fontSize: 12,),
-                        disableBackgroundColor: defaultdisableBackgroundColorType2,
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        hintStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        titleStyle: const TextStyle(
+                          fontSize: 12,
+                        ),
+                        disableBackgroundColor:
+                            defaultdisableBackgroundColorType2,
                         disableTextColor: defaultdisableTextColorType2,
                         backgroundColor: Colors.white,
                         //readOnly: true,
                         //enable: false,
                       ),
-                      
-                    ], 
+                    ],
                     groupTitleStyle: const TextStyle(fontSize: 14),
                     description: 'Description',
                     borderRadius: BorderRadius.circular(16),
                     descriptionStyle: const TextStyle(fontSize: 14),
                     errorText: 'Error',
                     isValid: false,
-                    errorStyle: const TextStyle(fontSize: 14,color: Colors.red),
+                    errorStyle:
+                        const TextStyle(fontSize: 14, color: Colors.red),
                     //borderRadius: BorderRadius.circular(16),
                   ),
-                  const SizedBox(height: 16,),
-                 
+                  const SizedBox(
+                    height: 16,
+                  ),
                 ],
               ),
             ),
