@@ -80,13 +80,11 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                   TextfieldBrick.common(
                     onChanged: (value) {},
                     title: 'Label',
-                    errorText: 'Error text',
                     hintText: 'Placeholder text',
                     focusNode: focusNode1,
                     backgroundColor: Colors.white,
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
-                    iconColor: Colors.blue,
                     prefixIconPath: "assets/icons/ic_user.png",
                     suffixIconPath: "assets/icons/ic_eye.png",
                     shadow: [
@@ -97,16 +95,7 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                         offset: const Offset(0, 3),
                       ),
                     ],
-                    focusShadow: [
-                      BoxShadow(
-                        color: Colors.green.withOpacity(0.25),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(16),
-                    errorStyle: const TextStyle(fontSize: 18),
+                    // borderRadius: BorderRadius.circular(16),
                     textStyle: const TextStyle(fontSize: 18),
                     hintStyle: const TextStyle(fontSize: 18),
                     titleStyle: const TextStyle(fontSize: 18),
@@ -121,21 +110,20 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                     title: 'Label',
                     errorText: 'Error text',
                     enable: false,
-                    isValid: false,
                     hintText: 'Disable textfield',
                     backgroundColor: Colors.white,
                     prefixIconPath: "assets/icons/ic_user.png",
                     suffixIconPath: "assets/icons/ic_eye.png",
                     //contentPadding: EdgeInsets.all(20),
                     //iconSize: 100,
-                    shadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.12),
-                        spreadRadius: 4,
-                        blurRadius: 8,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
+                    // shadow: [
+                    //   BoxShadow(
+                    //     color: Colors.black.withOpacity(0.12),
+                    //     spreadRadius: 4,
+                    //     blurRadius: 8,
+                    //     offset: const Offset(0, 0),
+                    //   ),
+                    // ],
                     borderRadius: BorderRadius.circular(16),
                     errorStyle: const TextStyle(fontSize: 18),
                     textStyle: const TextStyle(fontSize: 18),
@@ -156,29 +144,11 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                     backgroundColor: Colors.white,
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
-                    iconColor: Colors.red,
-                    isValid: false,
                     prefixIconPath: "assets/icons/ic_user.png",
                     suffixIconPath: "assets/icons/ic_eye.png",
                     shadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.12),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    focusShadow: [
-                      BoxShadow(
-                        color: Colors.green.withOpacity(0.25),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                    errorShadow: [
-                      BoxShadow(
-                        color: Colors.red.withOpacity(0.15),
                         spreadRadius: 5,
                         blurRadius: 7,
                         offset: const Offset(0, 3),

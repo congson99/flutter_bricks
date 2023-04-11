@@ -37,18 +37,15 @@ class CommonBaseTextfield extends StatelessWidget {
     this.suffixIconPath,
     this.iconSize,
     this.shadow,
-    this.focusShadow,
     this.textInputType,
-    this.verticalItemSpacing = 8,
-    this.textfieldWidth,
+    this.required = false,
     this.errorStyle,
     this.titleStyle,
     required this.disableTextColor,
     required this.disableBackgroundColor,
     this.iconColor,
     this.errorBorderColor = Colors.red,
-    this.isValid = true,
-    this.errorShadow,
+    this.textColor = Colors.black,
   });
 
   final bool isSearch;
@@ -59,8 +56,6 @@ class CommonBaseTextfield extends StatelessWidget {
   final String? hintText;
   final String? errorText;
   final Color errorBorderColor;
-  final List<BoxShadow>? errorShadow;
-  final bool isValid;
   final String? initialValue;
   final bool isObscured;
   final bool enable;
@@ -89,11 +84,10 @@ class CommonBaseTextfield extends StatelessWidget {
   final String? suffixIconPath;
   final double? iconSize;
   final Color? iconColor;
+  final Color textColor;
   final List<BoxShadow>? shadow;
-  final List<BoxShadow>? focusShadow;
   final TextInputType? textInputType;
-  final double verticalItemSpacing;
-  final double? textfieldWidth;
+  final bool required;
   final Color disableTextColor;
   final Color disableBackgroundColor;
 
@@ -104,23 +98,7 @@ class CommonBaseTextfield extends StatelessWidget {
       children: [
         buildTitle(),
         Container(
-          /// TODO: Tại sao phải có margin
-          margin: EdgeInsets.symmetric(vertical: verticalItemSpacing),
-          decoration: BoxDecoration(
-
-              /// TODO: Shadow không bắt buộc
-              /// Chỉ cần truyền vào có hay ko có shadow. Không quan tâm enable,focusNode,...
-              /// Xem lại UI trong figma
-              boxShadow: enable
-                  ? ((focusNode != null
-                      ? (focusNode!.hasFocus
-                          ? (isValid ? focusShadow : errorShadow)
-                          : shadow)
-                      : shadow))
-                  : null),
-
-          /// TODO: Không cần width
-          width: textfieldWidth,
+          decoration: BoxDecoration(boxShadow: shadow),
           child: TextFormField(
               enabled: enable,
               onChanged: onChanged,
@@ -138,7 +116,7 @@ class CommonBaseTextfield extends StatelessWidget {
               keyboardType: textInputType,
               textAlignVertical: textAlignVertical,
               textInputAction: textInputAction,
-              style: textStyle,
+              style: textStyle.copyWith(color: textColor),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: enable
@@ -148,24 +126,35 @@ class CommonBaseTextfield extends StatelessWidget {
                 hintText: hintText,
                 contentPadding: contentPadding ??
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                border: OutlineInputBorder(
-                  borderRadius: borderRadius ?? BorderRadius.circular(16),
-                  borderSide:
-                      const BorderSide(style: BorderStyle.none, width: 0),
-                ),
-
-                /// TODO: Cần rất nhiều border state khác nhau. Tham khảo source Sikico
+                enabledBorder: isSearch
+                    ? OutlineInputBorder(
+                        borderRadius: borderRadius ?? BorderRadius.circular(12),
+                        borderSide: BorderSide.none)
+                    : OutlineInputBorder(
+                        borderRadius: borderRadius ?? BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: focusBorderWidth ?? 1)),
+                disabledBorder: isSearch
+                    ? OutlineInputBorder(
+                        borderRadius: borderRadius ?? BorderRadius.circular(12),
+                        borderSide: BorderSide.none)
+                    : OutlineInputBorder(
+                        borderRadius: borderRadius ?? BorderRadius.circular(12),
+                        borderSide:
+                            const BorderSide(color: Colors.transparent)),
                 focusedBorder: isSearch
                     ? OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(16),
-                        borderSide: const BorderSide(color: Colors.transparent))
+                        borderRadius: borderRadius ?? BorderRadius.circular(12),
+                        borderSide: BorderSide.none)
                     : OutlineInputBorder(
                         borderSide: BorderSide(
-                            color:
-                                isValid ? focusBorderColor : errorBorderColor,
+                            color: errorText != null
+                                ? errorBorderColor
+                                : focusBorderColor,
                             width: focusBorderWidth ?? 1),
                         borderRadius:
-                            borderRadius ?? BorderRadius.circular(16)),
+                            borderRadius ?? BorderRadius.circular(12)),
                 prefixIcon: buildIcon(prefixIconPath, onPrefixIconTap),
                 suffixIcon: buildIcon(suffixIconPath, onSuffixIconTap),
               )),
@@ -177,29 +166,30 @@ class CommonBaseTextfield extends StatelessWidget {
 
   Widget buildTitle() {
     if (title != null) {
-      return Row(
-        children: [
-          /// TODO: Dùng rich text. Không dùng row
-          Text(title!,
-              style: enable
-                  ? titleStyle
-                  : titleStyle!.copyWith(color: disableTextColor)),
-          const SizedBox(width: 8),
-
-          /// TODO: "*" không bắt buộc. Truyền vào param required
-          const Text('*', style: TextStyle(color: Colors.red))
-        ],
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 8.0),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: RichText(
+            text: TextSpan(
+                text: title,
+                style: titleStyle!
+                    .copyWith(color: enable ? textColor : disableTextColor),
+                children: const [
+                  TextSpan(text: '  *', style: TextStyle(color: Colors.red))
+                ]),
+          ),
+        ),
       );
     }
     return const SizedBox.shrink();
   }
 
   Widget buildErrorText() {
-    /// TODO: Chỉ cần truyền errorText là đủ r. isValid bị dư
-    /// !enable thì vẫn có Err bình thường đâu có sao đâu
-    if (!isValid && enable) {
-      if (errorText != null) {
-        return Align(
+    if (errorText != null) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Align(
           alignment: Alignment.centerLeft,
           child: Text(
             errorText!,
@@ -207,8 +197,8 @@ class CommonBaseTextfield extends StatelessWidget {
                 ? errorStyle
                 : errorStyle!.copyWith(color: disableTextColor),
           ),
-        );
-      }
+        ),
+      );
     }
     return const SizedBox.shrink();
   }
@@ -219,7 +209,7 @@ class CommonBaseTextfield extends StatelessWidget {
         icon: path.extension(url) == ".svg"
             ? SvgPicture.asset(
                 url,
-                color: enable ? iconColor : disableTextColor,
+                color: iconColor,
                 height: iconSize,
                 width: iconSize,
                 fit: BoxFit.contain,
@@ -227,7 +217,7 @@ class CommonBaseTextfield extends StatelessWidget {
             : Image.asset(
                 url,
                 height: iconSize,
-                color: enable ? iconColor : disableTextColor,
+                color: iconColor,
                 width: iconSize,
                 fit: BoxFit.contain,
               ),

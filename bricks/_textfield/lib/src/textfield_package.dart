@@ -11,11 +11,11 @@ class TextfieldBrick {
   static Widget common({
     required ValueChanged<String> onChanged,
     required String title,
-    required String errorText,
+    String? errorText,
     required String hintText,
     required TextStyle textStyle,
     required TextStyle hintStyle,
-    required TextStyle errorStyle,
+    TextStyle? errorStyle,
     required TextStyle titleStyle,
     required Color disableTextColor,
     required Color disableBackgroundColor,
@@ -24,8 +24,6 @@ class TextfieldBrick {
     TextInputAction? textInputAction,
     ValueChanged<String>? onSubmit,
     Color errorBorderColor = Colors.red,
-    List<BoxShadow>? errorShadow,
-    bool isValid = true,
     String? initialValue,
     bool isObscured = false,
     bool enable = true,
@@ -47,11 +45,9 @@ class TextfieldBrick {
     String? suffixIconPath,
     double? iconSize,
     Color? iconColor,
+    Color textColor = Colors.black,
     List<BoxShadow>? shadow,
-    List<BoxShadow>? focusShadow,
     TextInputType? textInputType,
-    double verticalItemSpacing = 8,
-    double? textfieldWidth,
   }) {
     return CommonBaseTextfield(
       onChanged: onChanged,
@@ -66,8 +62,6 @@ class TextfieldBrick {
       onSubmit: onSubmit,
       hintText: hintText,
       errorBorderColor: errorBorderColor,
-      errorShadow: errorShadow,
-      isValid: isValid,
       initialValue: initialValue,
       isObscured: isObscured,
       enable: enable,
@@ -91,12 +85,10 @@ class TextfieldBrick {
       prefixIconPath: prefixIconPath,
       suffixIconPath: suffixIconPath,
       iconColor: iconColor,
+      textColor: textColor,
       iconSize: iconSize,
       shadow: shadow,
-      focusShadow: focusShadow,
       textInputType: textInputType,
-      verticalItemSpacing: verticalItemSpacing,
-      textfieldWidth: textfieldWidth,
     );
   }
 
@@ -112,7 +104,6 @@ class TextfieldBrick {
     Color? backgroundColor,
     TextInputAction? textInputAction,
     ValueChanged<String>? onSubmit,
-    List<BoxShadow>? errorShadow,
     bool isValid = true,
     String? initialValue,
     bool isObscured = false,
@@ -131,7 +122,6 @@ class TextfieldBrick {
     double? iconSize,
     Color? iconColor,
     List<BoxShadow>? shadow,
-    List<BoxShadow>? focusShadow,
     TextInputType? textInputType,
     double? textfieldWidth,
   }) {
@@ -144,8 +134,6 @@ class TextfieldBrick {
       onSubmit: onSubmit,
       borderRadius: borderRadius,
       hintText: hintText,
-      errorShadow: errorShadow,
-      isValid: isValid,
       initialValue: initialValue,
       isObscured: isObscured,
       enable: enable,
@@ -166,15 +154,14 @@ class TextfieldBrick {
       iconColor: iconColor,
       iconSize: iconSize,
       shadow: shadow,
-      focusShadow: focusShadow,
       textInputType: textInputType,
-      textfieldWidth: textfieldWidth,
       isSearch: true,
     );
   }
 
   static Widget animationSearch({
     required VoidCallback onPressed,
+    BorderRadius? borderRadius,
     required String searchIconPath,
     required TextStyle animationTextStype,
     required String animationText,
@@ -187,7 +174,8 @@ class TextfieldBrick {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12), color: backgroundColor),
+            borderRadius: borderRadius ?? BorderRadius.circular(12),
+            color: backgroundColor),
         child: Row(
           children: [
             IconButton(

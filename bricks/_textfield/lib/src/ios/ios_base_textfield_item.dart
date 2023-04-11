@@ -39,12 +39,13 @@ class IOSBaseTextfieldItem extends StatelessWidget {
     this.iconSize,
     this.iconColor,
     this.iconAlign,
-    this.titleStarSpacing,
+    this.titleStarSpacing, this.required = false,
   });
 
   final ValueChanged<String> onChanged;
   final ValueChanged<String>? onSubmit;
   final String title;
+  final bool required;
   final String hintText;
   final bool isValid;
   final String? initialValue;
@@ -90,7 +91,7 @@ class IOSBaseTextfieldItem extends StatelessWidget {
           decoration: BoxDecoration(
               border: Border(
                   bottom: BorderSide(
-                      color: underLineColor, width: underBorderWidth ?? 1))),
+                      color: underLineColor, width: underBorderWidth ?? 0.7))),
           child: Column(children: [
             buildTitle(),
             TextFormField(
@@ -147,16 +148,15 @@ class IOSBaseTextfieldItem extends StatelessWidget {
       child: Row(
         children: [
           Text(title,
-              style: enable
-                  ? titleStyle
-                  : titleStyle.copyWith(color: disableTextColor)),
+              style: titleStyle),
           SizedBox(
             width: titleStarSpacing ?? 2,
           ),
-          Text(
-            '*',
-            style: TextStyle(color: enable ? Colors.red : disableTextColor),
-          )
+          if(required)
+            Text(
+              '*',
+              style: TextStyle(color: enable ? Colors.red : disableTextColor),
+            )
         ],
       ),
     );
