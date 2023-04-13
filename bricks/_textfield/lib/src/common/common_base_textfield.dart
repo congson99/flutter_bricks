@@ -175,8 +175,9 @@ class CommonBaseTextfield extends StatelessWidget {
                 text: title,
                 style: titleStyle!
                     .copyWith(color: enable ? textColor : disableTextColor),
-                children: const [
-                  TextSpan(text: '  *', style: TextStyle(color: Colors.red))
+                children: [
+                  if(required) 
+                    const TextSpan(text: '  *', style: TextStyle(color: Colors.red))
                 ]),
           ),
         ),

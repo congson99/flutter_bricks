@@ -48,9 +48,11 @@ class TextfieldBrick {
     Color textColor = Colors.black,
     List<BoxShadow>? shadow,
     TextInputType? textInputType,
+    bool required = false,
   }) {
     return CommonBaseTextfield(
       onChanged: onChanged,
+      required: required,
       title: title,
       errorText: errorText,
       textStyle: textStyle,
@@ -251,9 +253,11 @@ class TextfieldBrick {
     Color? iconColor,
     AlignmentGeometry? iconAlign,
     VoidCallback? onNavigationPressed,
+    bool required = false
   }) {
     return IOSBaseTextfieldItem(
       onChanged: onChanged,
+      required: required,
       title: title,
       backgroundColor: backgroundColor,
       textStyle: textStyle,
