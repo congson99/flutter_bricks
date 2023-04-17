@@ -5,7 +5,7 @@ class TextfieldBrick extends Brick {
   TextfieldBrick()
       : super(
           name: "Textfield",
-          iconPath: "assets/icons/textfield.svg",
+          iconPath: "assets/icons/brick/textfield.svg",
           demoPage: const TextfieldBrickDemoPage(),
         );
 }

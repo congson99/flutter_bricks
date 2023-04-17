@@ -4,7 +4,7 @@ class PhotoBrick extends Brick {
   PhotoBrick()
       : super(
           name: "Photo",
-          iconPath: "assets/icons/photo.svg",
+          iconPath: "assets/icons/brick/photo.svg",
           demoPage: null,
         );
 }

@@ -5,7 +5,7 @@ class ButtonBrick extends Brick {
   ButtonBrick()
       : super(
           name: "Button",
-          iconPath: "assets/icons/button.svg",
+          iconPath: "assets/icons/brick/button.svg",
           demoPage: const ButtonBrickDemoPage(),
         );
 }

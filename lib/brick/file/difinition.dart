@@ -5,7 +5,7 @@ class FileBrick extends Brick {
   FileBrick()
       : super(
           name: "File",
-          iconPath: "assets/icons/file.svg",
+          iconPath: "assets/icons/brick/file.svg",
           demoPage: FilePackageDescription().demoPage,
         );
 }
