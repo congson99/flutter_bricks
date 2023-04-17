@@ -58,7 +58,12 @@ class BrickItemWidget extends StatelessWidget {
   }
 
   void pushInfoPage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (_) => InfoPage(brick: brick)));
+    if (brick.demoPage != null) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => brick.demoPage!));
+    } else {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => InfoPage(brick: brick)));
+    }
   }
 }
