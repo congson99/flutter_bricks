@@ -5,96 +5,96 @@ import 'package:path/path.dart' as path;
 class CommonBaseTextfield extends StatelessWidget {
   const CommonBaseTextfield({
     super.key,
-    required this.onChanged,
+    this.onChanged,
     this.onSubmit,
-    this.isSearch = false,
-    this.title,
+    this.initialValue,
+    this.textEditingController,
+    this.focusNode,
+    this.autoFocus,
+    this.enable = true,
+    this.isRequired = false,
+    this.label,
     this.hintText,
     this.errorText,
-    this.initialValue,
-    this.isObscured = false,
-    this.enable = true,
-    this.contentPadding,
-    this.focusNode,
-    this.borderRadius,
-    this.focusBorderWidth,
-    this.focusBorderColor = Colors.green,
-    this.textEditingController,
-    this.textCapitalization = TextCapitalization.none,
-    this.autoFocus = false,
-    this.maxLength,
-    this.maxLines,
-    this.backgroundColor,
-    this.readOnly = false,
     required this.textStyle,
-    this.hintStyle,
-    this.textAlign = TextAlign.start,
-    this.textAlignVertical = TextAlignVertical.center,
-    this.textInputAction,
-    this.onSuffixIconTap,
-    this.onPrefixIconTap,
-    this.prefixIconPath,
-    this.suffixIconPath,
-    this.iconSize,
-    this.shadow,
-    this.textInputType,
-    this.required = false,
-    this.errorStyle,
-    this.titleStyle,
+    required this.labelTextStyle,
+    required this.hintTextStyle,
+    required this.errorTextStyle,
+    required this.focusBorderColor,
+    required this.errorBorderColor,
+    required this.enableBorderColor,
+    required this.disableBorderColor,
+    required this.backgroundColor,
     required this.disableTextColor,
     required this.disableBackgroundColor,
+    this.isObscured,
+    this.textAlign,
+    this.textAlignVertical,
+    this.textInputAction,
+    this.textInputType,
+    this.contentPadding,
+    this.borderRadius,
+    this.borderWidth,
+    this.shadow,
+    this.textCapitalization,
+    this.maxLength,
+    this.maxLines,
+    this.readOnly,
+    this.prefixIconPath,
+    this.suffixIconPath,
+    this.onSuffixIconTap,
+    this.onPrefixIconTap,
+    this.iconSize,
     this.iconColor,
-    this.errorBorderColor = Colors.red,
-    this.textColor = Colors.black,
   });
 
-  final bool isSearch;
-
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final ValueChanged<String>? onSubmit;
-  final String? title;
+  final String? initialValue;
+  final TextEditingController? textEditingController;
+  final FocusNode? focusNode;
+  final bool? autoFocus;
+  final bool? enable;
+  final bool? isRequired;
+  final String? label;
   final String? hintText;
   final String? errorText;
-  final Color errorBorderColor;
-  final String? initialValue;
-  final bool isObscured;
-  final bool enable;
-  final EdgeInsets? contentPadding;
-  final FocusNode? focusNode;
-  final BorderRadius? borderRadius;
-  final double? focusBorderWidth;
-  final Color focusBorderColor;
-  final TextEditingController? textEditingController;
-  final TextCapitalization textCapitalization;
-  final bool autoFocus;
-  final int? maxLength;
-  final int? maxLines;
-  final Color? backgroundColor;
-  final bool readOnly;
   final TextStyle textStyle;
-  final TextStyle? hintStyle;
-  final TextStyle? errorStyle;
-  final TextStyle? titleStyle;
-  final TextAlign textAlign;
-  final TextAlignVertical textAlignVertical;
-  final TextInputAction? textInputAction;
-  final VoidCallback? onSuffixIconTap;
-  final VoidCallback? onPrefixIconTap;
-  final String? prefixIconPath;
-  final String? suffixIconPath;
-  final double? iconSize;
-  final Color? iconColor;
-  final Color textColor;
-  final List<BoxShadow>? shadow;
-  final TextInputType? textInputType;
-  final bool required;
+  final TextStyle labelTextStyle;
+  final TextStyle hintTextStyle;
+  final TextStyle errorTextStyle;
+  final Color focusBorderColor;
+  final Color errorBorderColor;
+  final Color enableBorderColor;
+  final Color disableBorderColor;
+  final Color backgroundColor;
   final Color disableTextColor;
   final Color disableBackgroundColor;
+  final bool? isObscured;
+  final TextAlign? textAlign;
+  final TextAlignVertical? textAlignVertical;
+  final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
+  final EdgeInsets? contentPadding;
+  final BorderRadius? borderRadius;
+  final double? borderWidth;
+  final List<BoxShadow>? shadow;
+  final TextCapitalization? textCapitalization;
+  final int? maxLength;
+  final int? maxLines;
+  final bool? readOnly;
+  final String? prefixIconPath;
+  final String? suffixIconPath;
+  final VoidCallback? onSuffixIconTap;
+  final VoidCallback? onPrefixIconTap;
+  final double? iconSize;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         buildTitle(),
         Container(
@@ -105,56 +105,45 @@ class CommonBaseTextfield extends StatelessWidget {
               onFieldSubmitted: onSubmit,
               initialValue: initialValue,
               controller: textEditingController,
-              textCapitalization: textCapitalization,
-              autofocus: autoFocus,
+              textCapitalization: textCapitalization ?? TextCapitalization.none,
+              autofocus: autoFocus ?? false,
               maxLength: maxLength,
               maxLines: maxLines,
-              obscureText: isObscured,
+              obscureText: isObscured ?? false,
               focusNode: focusNode,
-              readOnly: readOnly,
-              textAlign: textAlign,
+              readOnly: readOnly ?? false,
+              textAlign: textAlign ?? TextAlign.start,
               keyboardType: textInputType,
               textAlignVertical: textAlignVertical,
               textInputAction: textInputAction,
-              style: textStyle.copyWith(color: textColor),
+              style: textStyle,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: enable
-                    ? (backgroundColor ?? Colors.transparent)
-                    : (disableBackgroundColor),
-                hintStyle: hintStyle,
+                fillColor: (enable != false)
+                    ? backgroundColor
+                    : disableBackgroundColor,
+                hintStyle: hintTextStyle,
                 hintText: hintText,
                 contentPadding: contentPadding ??
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                enabledBorder: isSearch
-                    ? OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(12),
-                        borderSide: BorderSide.none)
-                    : OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(12),
-                        borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: focusBorderWidth ?? 1)),
-                disabledBorder: isSearch
-                    ? OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(12),
-                        borderSide: BorderSide.none)
-                    : OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(12),
-                        borderSide:
-                            const BorderSide(color: Colors.transparent)),
-                focusedBorder: isSearch
-                    ? OutlineInputBorder(
-                        borderRadius: borderRadius ?? BorderRadius.circular(12),
-                        borderSide: BorderSide.none)
-                    : OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: errorText != null
-                                ? errorBorderColor
-                                : focusBorderColor,
-                            width: focusBorderWidth ?? 1),
-                        borderRadius:
-                            borderRadius ?? BorderRadius.circular(12)),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: borderRadius ?? BorderRadius.zero,
+                    borderSide: BorderSide(
+                        color: (errorText != null)
+                            ? errorBorderColor
+                            : enableBorderColor,
+                        width: borderWidth ?? 1)),
+                disabledBorder: OutlineInputBorder(
+                    borderRadius: borderRadius ?? BorderRadius.zero,
+                    borderSide: BorderSide(
+                        color: disableBorderColor, width: borderWidth ?? 1)),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: borderRadius ?? BorderRadius.zero,
+                    borderSide: BorderSide(
+                        color: (errorText != null)
+                            ? errorBorderColor
+                            : focusBorderColor,
+                        width: borderWidth ?? 1)),
                 prefixIcon: buildIcon(prefixIconPath, onPrefixIconTap),
                 suffixIcon: buildIcon(suffixIconPath, onSuffixIconTap),
               )),
@@ -165,19 +154,20 @@ class CommonBaseTextfield extends StatelessWidget {
   }
 
   Widget buildTitle() {
-    if (title != null) {
+    if (label != null) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
         child: Align(
           alignment: Alignment.centerLeft,
           child: RichText(
             text: TextSpan(
-                text: title,
-                style: titleStyle!
-                    .copyWith(color: enable ? textColor : disableTextColor),
+                text: label,
+                style: labelTextStyle.copyWith(
+                    color: (enable == false) ? disableTextColor : null),
                 children: [
-                  if(required) 
-                    const TextSpan(text: '  *', style: TextStyle(color: Colors.red))
+                  if (isRequired == true)
+                    const TextSpan(
+                        text: ' *', style: TextStyle(color: Colors.red))
                 ]),
           ),
         ),
@@ -194,9 +184,8 @@ class CommonBaseTextfield extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             errorText!,
-            style: enable
-                ? errorStyle
-                : errorStyle!.copyWith(color: disableTextColor),
+            style: errorTextStyle.copyWith(
+                color: (enable == false) ? disableTextColor : null),
           ),
         ),
       );
