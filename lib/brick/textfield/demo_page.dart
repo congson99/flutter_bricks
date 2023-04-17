@@ -60,8 +60,6 @@ class _TextfieldBrickDemoPageState extends State<TextfieldBrickDemoPage> {
                     isRequired: true,
                     textInputAction: TextInputAction.done,
                     maxLines: 1,
-                    prefixIconPath: "assets/icons/ic_user.png",
-                    suffixIconPath: "assets/icons/ic_eye.png",
                     shadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.12),
