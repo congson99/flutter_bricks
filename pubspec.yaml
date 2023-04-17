@@ -17,6 +17,8 @@ dependencies:
     path: bricks/_photo
   _button:
     path: bricks/_button
+  _textfield:
+    path: bricks/_textfield
 
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.11.0
