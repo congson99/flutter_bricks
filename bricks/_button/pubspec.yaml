@@ -1,6 +1,6 @@
 name: _button
-description: A new Flutter package project.
-version: 0.0.1
+description: Button Widget.
+version: 1.0.0
 publish_to: none
 
 environment:

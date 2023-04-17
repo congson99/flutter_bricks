@@ -3,17 +3,14 @@ import 'package:bricks/presentation/widget/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ButtonBrickDemoPage extends StatelessWidget {
-  const ButtonBrickDemoPage({Key? key, required this.brickName})
-      : super(key: key);
-
-  final String brickName;
+  const ButtonBrickDemoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          AppBarWidget(title: "$brickName Demo"),
+          const AppBarWidget(title: "Button Demo"),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -22,7 +19,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(height: 32),
-                    ButtonBrick().base(
+                    ButtonBrick.base(
                       onPressed: () {},
                       content:
                           'ButtonButtonButtonButtonButtonButtonButtonButtonButtonButtonButtonButton',
@@ -37,7 +34,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().primary(
+                    ButtonBrick.primary(
                       onPressed: () {},
                       content: 'Primary',
                       preIconUrl: "assets/icons/photo.svg",
@@ -48,7 +45,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       disableBackgroundColor: Colors.grey,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().secondary(
+                    ButtonBrick.secondary(
                       onPressed: () {},
                       content: 'Primary',
                       preIconUrl: "assets/icons/photo.svg",
@@ -57,7 +54,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       disableContentColor: Colors.grey,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().text(
+                    ButtonBrick.text(
                       onPressed: () {},
                       content: 'Primary',
                       textStyle: const TextStyle(fontSize: 18),
@@ -65,7 +62,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       disableContentColor: Colors.grey,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().primary(
+                    ButtonBrick.primary(
                       disable: true,
                       onPressed: () {},
                       content: 'Primary',
@@ -77,7 +74,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       disableBackgroundColor: Colors.grey,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().secondary(
+                    ButtonBrick.secondary(
                       disable: true,
                       onPressed: () {},
                       content: 'Primary',
@@ -87,7 +84,7 @@ class ButtonBrickDemoPage extends StatelessWidget {
                       disableContentColor: Colors.grey,
                     ),
                     const SizedBox(height: 32),
-                    ButtonBrick().text(
+                    ButtonBrick.text(
                       disable: true,
                       onPressed: () {},
                       content: 'Primary',

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'base_button.dart';
 
 class ButtonBrick {
-  Widget base({
+  static Widget base({
     required VoidCallback onPressed,
     required String content,
     double height = 48,
@@ -57,7 +57,7 @@ class ButtonBrick {
     );
   }
 
-  Widget primary({
+  static Widget primary({
     required VoidCallback onPressed,
     required String content,
     double height = 48,
@@ -105,7 +105,7 @@ class ButtonBrick {
     );
   }
 
-  Widget secondary({
+  static Widget secondary({
     required VoidCallback onPressed,
     required String content,
     double height = 48,
@@ -157,7 +157,7 @@ class ButtonBrick {
     );
   }
 
-  Widget text({
+  static Widget text({
     required VoidCallback onPressed,
     required String content,
     double height = 48,

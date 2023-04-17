@@ -15,25 +15,10 @@ class InfoPage extends StatelessWidget {
         children: [
           AppBarWidget(title: brick.name, demoPage: brick.demoPage),
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: horizontalMargin),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 24),
-                    Text("[${brick.id}] ${brick.name} (v${brick.version})",
-                        style: BaseTextStyle.subtitle1()),
-                    const SizedBox(height: 24),
-                    Text(brick.description, style: BaseTextStyle.label()),
-                    const SizedBox(height: 32),
-                    SizedBox(height: MediaQuery.of(context).padding.bottom)
-                  ],
-                ),
-              ),
-            ),
-          ),
+              child: Center(
+            child: Text("Not have Demo Page for this brick",
+                style: BaseTextStyle.body()),
+          )),
         ],
       ),
     );
