@@ -8,7 +8,7 @@ class ButtonBrick extends Brick {
           id: "CB23",
           version: ButtonBrickConfig().version,
           name: ButtonBrickConfig().name,
-          iconPath: "assets/icons/file.svg",
+          iconPath: "assets/icons/button.svg",
           demoPage: ButtonBrickDemoPage(brickName: ButtonBrickConfig().name),
           description: ButtonBrickConfig().description,
         );
