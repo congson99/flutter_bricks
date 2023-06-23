@@ -1,6 +1,6 @@
 # Avatar Bricks
 
-Avatar Widget
+Custom Avatar Widget
 
 ## Example
 
