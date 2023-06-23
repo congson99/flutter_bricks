@@ -29,9 +29,10 @@ dependencies:
 
 **• Bước 4:** Import brick vừa khai báo ở file bạn cần dùng và gọi nó để sử dụng.
 
-Ví dụ:
-
 ```dart
+
+/// Ví dụ:
+
 import 'package:_avatar/_avatar.dart';
 
 Widget avatarBrick() =>
