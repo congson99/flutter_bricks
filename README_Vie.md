@@ -9,7 +9,7 @@ Brick là thư viện cung cấp các package cho dự án Flutter.
 
 # Hướng dẫn sử dụng
 
-**• Bước 1:** Tạo thư mục tên "bricks" ở thư mục dự án (Tương tự source code này)
+**• Bước 1:** Tạo thư mục tên "bricks" ở thư mục dự án (Tương tự source code này).
 
 **• Bước 2:** Copy thư mục brick mà bạn muốn dùng từ source code này và paste vào thư mục "bricks"
 mà bạn vừa tạo.

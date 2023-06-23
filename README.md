@@ -1,5 +1,5 @@
-[English](https://github.com/congson99/bricks/blob/son/refactor/README.md)
-| [Tiếng Việt](https://github.com/congson99/bricks/blob/son/refactor/README_Vie.md)
+[English](./README.md)
+| [Tiếng Việt](./README_Vie.md)
 
 # Overview
 
@@ -11,10 +11,11 @@ Brick is a library that provides Packages for the Flutter Project.
 
 **• Step 1:** Create a folder named "bricks" in the root of the project like this source.
 
-**• Step 2:** Copy the brick (package) you need from this source and paste it in your "bricks"
+**• Step 2:** Copy the brick (package) you need from this source and paste it in your added "bricks"
 folder.
 
-**• Step 3:** In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
+**• Step 3:** In [pubspec.yaml](./pubspec.yaml), declare the newly added brick below "dependencies:"
+as follows
 
 ```yaml
 dependencies:
