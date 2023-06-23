@@ -10,8 +10,10 @@ Brick là thư viện cung cấp các package cho dự án Flutter.
 # Hướng dẫn sử dụng
 
 **• Bước 1:** Tạo thư mục tên "bricks" ở thư mục dự án (Tương tự source code này)
+
 **• Bước 2:** Copy thư mục brick mà bạn muốn dùng từ source code này và paste vào thư mục "bricks"
 mà bạn vừa tạo.
+
 **• Bước 3:** Ở pubspec.yaml của thư mục dự án, khai báo brick vừa copy và paste vào phía dưới "
 dependencies:" như sau:
 
@@ -25,7 +27,9 @@ dependencies:
     path: bricks/_avatar
 ```
 
-**• Bước 4:** Import brick vừa khai báo ở file bạn cần dùng và gọi nó để sử dụng. Ví dụ:
+**• Bước 4:** Import brick vừa khai báo ở file bạn cần dùng và gọi nó để sử dụng.
+
+Ví dụ:
 
 ```dart
 import 'package:_avatar/_avatar.dart';
