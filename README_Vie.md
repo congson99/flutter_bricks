@@ -1,5 +1,4 @@
 [English](https://github.com/congson99/bricks/blob/son/refactor/README.md)
-| [Tiếng Việt](https://github.com/congson99/bricks/blob/son/refactor/README.md)
 A library that provides Packages for the Flutter Project.
 
 ## Usage
