@@ -4,15 +4,15 @@ A library that provides Packages for the Flutter Project.
 
 ### Usage
 
-#### Step 1
+#### - Step 1
 
 Create a folder named "bricks" in the root of the project like this source
 
-#### Step 2
+#### - Step 2
 
 Copy the brick (package) you need from this source and paste it in your "bricks" folder
 
-#### Step 2
+#### - Step 3
 
 In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
 
@@ -24,7 +24,6 @@ dependencies:
   # Examples
   _avatar:
     path: bricks/_avatar
-
 ```
 
 ### Packages
