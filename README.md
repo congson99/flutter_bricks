@@ -3,7 +3,7 @@
 
 # Overview
 
-<a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/son/refactor/assets/icons/app_icon.png" alt="Icon" width="120"></a>
+<a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/master/assets/icons/app_icon.png?raw=true" alt="Icon" width="120"></a>
 
 Brick is a library that provides Packages for the Flutter Project.
 
