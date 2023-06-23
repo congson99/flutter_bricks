@@ -7,7 +7,7 @@
 
 A library that provides Packages for the Flutter Project.
 
-## Usage
+# Usage
 
 ### Step 1
 
@@ -45,7 +45,7 @@ Widget avatarBrick() =>
         size: 56);
 ```
 
-## Packages
+# Packages
 
 | Brick                            | Description                                           | Type     | Version | 
 |:---------------------------------|:------------------------------------------------------|:---------|:--------|
