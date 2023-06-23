@@ -4,9 +4,28 @@ A library that provides Packages for the Flutter Project.
 
 ### Usage
 
-##### Step 1
+#### Step 1
 
-A library that provides Packages for the Flutter Project.
+Create a folder named "bricks" in the root of the project like this source
+
+#### Step 2
+
+Copy the brick (package) you need from this source and paste it in your "bricks" folder
+
+#### Step 2
+
+In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
+
+```yaml
+dependencies:
+  _brick_name:
+    path: bricks_path
+
+  # Examples
+  _avatar:
+    path: bricks/_avatar
+
+```
 
 ### Packages
 
