@@ -1,5 +1,5 @@
 import 'package:bricks/data/model/brick.dart';
-import 'package:bricks/presentation/page/info_page.dart';
+import 'package:bricks/presentation/page/empty_page.dart';
 import 'package:bricks/util/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -63,7 +63,7 @@ class BrickItemWidget extends StatelessWidget {
           context, MaterialPageRoute(builder: (_) => brick.demoPage!));
     } else {
       Navigator.push(
-          context, MaterialPageRoute(builder: (_) => InfoPage(brick: brick)));
+          context, MaterialPageRoute(builder: (_) => EmptyPage(brick: brick)));
     }
   }
 }
