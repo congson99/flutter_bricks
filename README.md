@@ -4,7 +4,7 @@ A library that provides Packages for the Flutter Project.
 
 ### Usage
 
-#### - Step 1
+- Step 1
 
 Create a folder named "bricks" in the root of the project like this source
 
