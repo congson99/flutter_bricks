@@ -22,16 +22,17 @@ dependencies:
   _brick_name:
     path: bricks_path
 
-  # Examples
+  # Example:
   _avatar:
     path: bricks/_avatar
 ```
 
 **• Step 4:** Import the newly added brick path and use
 
-example:
-
 ```dart
+
+/// Example:
+
 import 'package:_avatar/_avatar.dart';
 
 Widget avatarBrick() =>
