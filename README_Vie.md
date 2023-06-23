@@ -1,19 +1,19 @@
-[English](https://github.com/congson99/bricks/blob/son/refactor/README.md)
-A library that provides Packages for the Flutter Project.
+[Tiếng Việt](https://github.com/congson99/bricks/blob/son/refactor/README_Vie.md)
+| [English](https://github.com/congson99/bricks/blob/son/refactor/README.md)
 
-## Usage
+# Tổng quan
 
-### Step 1
+<a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/son/refactor/assets/icons/app_icon.png" alt="Icon" width="120"></a>
 
-Create a folder named "bricks" in the root of the project like this source
+Brick là thư viện cung cấp các package cho dự án Flutter.
 
-### Step 2
+# Hướng dẫn sử dụng
 
-Copy the brick (package) you need from this source and paste it in your "bricks" folder
-
-### Step 3
-
-In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
+**• Bước 1:** Tạo thư mục tên "bricks" ở thư mục dự án (Tương tự source code này)
+**• Bước 2:** Copy thư mục brick mà bạn muốn dùng từ source code này và paste vào thư mục "bricks"
+mà bạn vừa tạo.
+**• Bước 3:** Ở pubspec.yaml của thư mục dự án, khai báo brick vừa copy và paste vào phía dưới "
+dependencies:" như sau:
 
 ```yaml
 dependencies:
@@ -25,9 +25,7 @@ dependencies:
     path: bricks/_avatar
 ```
 
-### Step 4
-
-Import the newly added brick path and use
+**• Bước 4:** Import brick vừa khai báo ở file bạn cần dùng và gọi nó để sử dụng. Ví dụ:
 
 ```dart
 import 'package:_avatar/_avatar.dart';
@@ -39,14 +37,6 @@ Widget avatarBrick() =>
         size: 56);
 ```
 
-## Packages
+# Danh sách Brick
 
-| Brick                            | Description                                           | Type     | Version | 
-|:---------------------------------|:------------------------------------------------------|:---------|:--------|
-| [Avatar](./bricks/_avatar)       | Custom Avatar Widget                                  | Widget   | 1.0     |
-| [Button](./bricks/_button)       | Custom Button Widget                                  | Widget   | 1.0     |
-| [Textfield](./bricks/_textfield) | Custom Textfield Widget                               | Widget   | 1.0     |
-
-[//]: # (| [File]&#40;./bricks/_file&#41;           | Functions to help handle file                         | Function | beta    |)
-
-[//]: # (| [Photo]&#40;./bricks/_file&#41;          | Functions to help handle photo from camera or gallery | Function | beta    |)
+[Xem ở cuối bản Tiếng Anh](https://github.com/congson99/bricks/blob/son/refactor/README.md)
