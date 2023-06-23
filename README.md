@@ -29,6 +29,8 @@ dependencies:
 
 **• Step 4:** Import the newly added brick path and use
 
+example:
+
 ```dart
 import 'package:_avatar/_avatar.dart';
 
