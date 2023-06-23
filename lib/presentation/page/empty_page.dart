@@ -3,8 +3,8 @@ import 'package:bricks/presentation/widget/app_bar_widget.dart';
 import 'package:bricks/util/style/base_text_style.dart';
 import 'package:flutter/material.dart';
 
-class InfoPage extends StatelessWidget {
-  const InfoPage({Key? key, required this.brick}) : super(key: key);
+class EmptyPage extends StatelessWidget {
+  const EmptyPage({Key? key, required this.brick}) : super(key: key);
 
   final Brick brick;
 

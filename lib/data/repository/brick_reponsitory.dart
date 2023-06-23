@@ -1,3 +1,4 @@
+import 'package:bricks/brick/avatar/difinition.dart';
 import 'package:bricks/brick/button/difinition.dart';
 import 'package:bricks/brick/file/difinition.dart';
 import 'package:bricks/brick/photo/difinition.dart';
@@ -35,7 +36,8 @@ class BrickRepository implements BrickRepositoryInterface {
       FileBrick(),
       PhotoBrick(),
       ButtonBrick(),
-      TextfieldBrick()
+      TextfieldBrick(),
+      AvatarBrick(),
     ]);
   }
 
