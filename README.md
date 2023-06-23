@@ -9,15 +9,12 @@ Brick is a library that provides Packages for the Flutter Project.
 
 # Usage
 
-**Step 1:** Create a folder named "bricks" in the root of the project like this source
+**• Step 1:** Create a folder named "bricks" in the root of the project like this source.
 
-### Step 2
+**• Step 2:** Copy the brick (package) you need from this source and paste it in your "bricks"
+folder.
 
-Copy the brick (package) you need from this source and paste it in your "bricks" folder
-
-### Step 3
-
-In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
+**• Step 3:** In pubspec.yaml, declare the newly added brick below "dependencies:" as follows
 
 ```yaml
 dependencies:
@@ -29,9 +26,7 @@ dependencies:
     path: bricks/_avatar
 ```
 
-### Step 4
-
-Import the newly added brick path and use
+**• Step 4:** Import the newly added brick path and use
 
 ```dart
 import 'package:_avatar/_avatar.dart';
