@@ -22,7 +22,7 @@ dependencies:
   _brick_name:
     path: bricks_path
 
-  # Examples
+  # Ví dụ:
   _avatar:
     path: bricks/_avatar
 ```
