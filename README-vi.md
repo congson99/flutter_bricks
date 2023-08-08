@@ -1,5 +1,4 @@
-[Tiếng Việt](./README_Vie.md)
-| [English](./README.md)
+Tiếng Việt | [English](./README.md)
 
 # Tổng quan
 
