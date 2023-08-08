@@ -1,6 +1,6 @@
-import 'package:bricks/presentations/dashboard_page.dart';
-import 'package:bricks/util/style/base_theme.dart';
+import 'package:bricks/presentation/page/dashboard_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,8 +13,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: baseTheme(),
-      home: const DashboardPage(),
+      theme: ThemeData(
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: buildSystemUiOverlay(),
     );
   }
+}
+
+Widget buildSystemUiOverlay() {
+  return const AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark, child: DashboardPage());
 }
