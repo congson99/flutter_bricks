@@ -1,5 +1,5 @@
-[Tiếng Việt](https://github.com/congson99/bricks/blob/son/refactor/README_Vie.md)
-| [English](https://github.com/congson99/bricks/blob/son/refactor/README.md)
+[Tiếng Việt](./README_Vie.md)
+| [English](./README.md)
 
 # Tổng quan
 
@@ -42,4 +42,4 @@ Widget avatarBrick() =>
 ```
 
 # Bricks
-Danh sách các Bricks (Packages) chúng tôi đang phát triển sẽ được liệt kê ở cuối [bản tài liệu Tiếng Anh](https://github.com/congson99/bricks/blob/son/refactor/README.md)
+Danh sách các Bricks (Packages) chúng tôi đang phát triển sẽ được liệt kê ở cuối [bản tài liệu Tiếng Anh](./README.md)
