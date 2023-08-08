@@ -1,5 +1,4 @@
-[English](./README.md)
-| [Tiếng Việt](./README_Vie.md)
+English | [Tiếng Việt](README-vi.md)
 
 # Overview
 
