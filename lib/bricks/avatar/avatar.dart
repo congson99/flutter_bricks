@@ -1,7 +1,7 @@
-import 'package:bricks/brick/avatar/demo_page.dart';
-import 'package:bricks/data/model/brick.dart';
+import 'package:bricks/bricks/avatar/demo_page.dart';
+import 'package:bricks/home/data/brick_model.dart';
 
-class AvatarBrick extends Brick {
+class AvatarBrick extends BrickModel {
   AvatarBrick()
       : super(
           name: "Avatar",

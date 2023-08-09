@@ -1,7 +1,7 @@
-import 'package:bricks/brick/textfield/demo_page.dart';
-import 'package:bricks/data/model/brick.dart';
+import 'package:bricks/bricks/textfield/demo_page.dart';
+import 'package:bricks/home/data/brick_model.dart';
 
-class TextfieldBrick extends Brick {
+class TextfieldBrick extends BrickModel {
   TextfieldBrick()
       : super(
           name: "Textfield",

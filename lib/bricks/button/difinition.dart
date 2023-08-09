@@ -1,7 +1,7 @@
-import 'package:bricks/brick/button/demo_page.dart';
-import 'package:bricks/data/model/brick.dart';
+import 'package:bricks/bricks/button/demo_page.dart';
+import 'package:bricks/home/data/brick_model.dart';
 
-class ButtonBrick extends Brick {
+class ButtonBrick extends BrickModel {
   ButtonBrick()
       : super(
           name: "Button",

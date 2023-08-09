@@ -1,4 +1,4 @@
-import 'package:bricks/presentation/page/dashboard_page.dart';
+import 'package:bricks/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,5 +24,5 @@ class MyApp extends StatelessWidget {
 
 Widget buildSystemUiOverlay() {
   return const AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.dark, child: DashboardPage());
+      value: SystemUiOverlayStyle.dark, child: HomePage());
 }
