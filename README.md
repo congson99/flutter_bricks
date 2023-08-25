@@ -54,7 +54,6 @@ Widget avatarBrick() =>
 Below are all the bricks (packages) we have developed. They will be located in
 the [bricks](./bricks) directory of this repository.
 
-| Brick | Description | Type | Version | |--------|-------------|:-------:|:---------:|
-| [Avatar](./bricks/_avatar) | Custom Avatar Widget | Widget
-| [![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick)
-|
+| Brick | Description | Type | Version | 
+|--------|-------------|:----:|:-------:|
+|[Avatar](./bricks/_avatar)|Custom Avatar Widget|Widget|[![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick)|
