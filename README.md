@@ -10,14 +10,11 @@ Some of them, which may have widespread utility, will be published on pub.dev. T
 specific functionalities, will be shared in this repository, and you will need to manually copy and
 set them up in your source code for usage. I have provided detailed instructions right below.
 
-Thank you for visiting my repo, and I hope you will provide feedback or suggestions for any areas
-where the plugins may not be optimal, so that we can collectively enhance them.
-
 # Bricks
 
 | Brick                                                     | Description | Type | Version | 
 |-----------------------------------------------------------|-------------|:----:|:-------:|
-| [avatar_brick](https://github.com/congson99/avatar_brick) |Custom Avatar Widget|Widget|[![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick)|
+| [avatar_brick](https://github.com/congson99/avatar_brick) |Avatar Brick is a custom avatar can automatically display your abbreviation name when no avatar is available|Widget|[![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick)|
 
 # How to use local packages
 
@@ -54,3 +51,11 @@ Widget avatarBrick() =>
         "https://i-english.vnecdn.net/2023/04/28/chipu-1682673790-1682673805-6534-1682673939.png",
         size: 56);
 ```
+
+# Thank you for using my packages!
+
+Thank you for visiting my repo, and I hope you will provide feedback or suggestions for any areas
+where the plugins may not be optimal, so that we can collectively enhance them.
+
+Contact me: [congson99vn@gmail.com](mailto:congson99vn@gmail.com)
+| [linkedin](https://www.linkedin.com/in/congson/) | [github](https://github.com/congson99)
