@@ -2,17 +2,17 @@
 
 <a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/master/assets/icons/app_icon.png?raw=true" alt="Icon" width="120"></a>
 
-This repository is where I compile and share the Flutter packages that I conceive and develop. (I
-refer to these packages as "Brick" because they are akin to the bricks that construct a complete
-project)
+This repository is where I compile and share **Flutter Packages** that I conceive and develop. (I
+refer to these packages as **"Brick"** because they are akin to the bricks that construct a complete
+project :>)
 
-Some of them, which may have widespread utility, will be published on pub.dev. The rest, with more
-specific functionalities, will be shared in this repository, and you will need to manually copy and
+Some of them will be published on [pub.dev](http://pub.dev/). Others, which need customization inside the package to be usable, will be shared in this repository, and you will need to manually copy and
 set them up in your source code for usage. I have provided detailed instructions right below.
+<br />
 
-# Bricks
+# Packages
 
-| Brick                                                     | Description                                                                                                  | Type |                                             http://pub.dev/                                              | 
+| Packages                                                     | Description                                                                                                  | Type |                                             http://pub.dev/                                              | 
 |:----------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:----:|:---------------------------------------------------------------------------------------------------------:|
 | [avatar_brick](https://github.com/congson99/avatar_brick) | Avatar Brick is a custom avatar can automatically display your abbreviation name when no avatar is available |Widget| [![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick) |
 
