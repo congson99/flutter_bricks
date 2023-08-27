@@ -20,7 +20,7 @@ set them up in your source code for usage. I have provided detailed instructions
 
 # How to use local packages
 
-## Step 1 
+### Step 1 
 Create a directory named "bricks" or any name you prefer within the root directory of
 your project, similar to this source. (This directory will store the customized packages for your
 project)
