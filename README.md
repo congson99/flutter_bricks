@@ -21,44 +21,41 @@ set them up in your source code for usage. I have provided detailed instructions
 # How to use local packages
 
 ### Step 1 
-Create a directory named "bricks" or any name you prefer within the root directory of
-your project, similar to this source. (This directory will store the customized packages for your
-project)
+Create a directory named **"local_package"** or any name you prefer within the root directory of your project, similar to this source.(This directory will store all custom local packages for your project)
 
-**• Step 2:** Copy the package you need from this source code and paste it into the "bricks"
-directory you just created in your own source code.
+### Step 2
+Copy the package you need from this source code and paste it into the **"local_package"** directory you just created in your own source code.
 
-**• Step 3:** In [pubspec.yaml](./pubspec.yaml), declare the newly added package below "
-dependencies:"
-as shown in the following example:
+### Step 3
+In [pubspec.yaml](./pubspec.yaml), declare the newly added package below "dependencies:" as shown in the following example:
 
 ```yaml
 dependencies:
-  _brick_name:
-    path: bricks_path
-
+  package_name:
+    path: package_path
+    
   # Example:
   _avatar:
-    path: bricks/_avatar
+    path: local_package/_avatar
 ```
 
-**• Step 4:** Import the path of that package where you want to use it and start utilizing it. as
-shown in the following example:
+### Step 3
+Import the path of that package where you want to use it and start utilizing it. as shown in the following example:
 
 ```dart
 import 'package:_avatar/_avatar.dart';
 
 Widget avatarBrick() =>
-    AvatarBrick.circle(
-        networkPath:
-        "https://i-english.vnecdn.net/2023/04/28/chipu-1682673790-1682673805-6534-1682673939.png",
-        size: 56);
+    AvatarBrick.network(
+        src: "https://i-english.vnecdn.net/2023/04/28/chipu-1682673790-1682673805-6534-1682673939.png",
+        size: 56,
+    );
 ```
+
+<br />
 
 # Thank you for using my packages!
 
-Thank you for visiting my repo, and I hope you will provide feedback or suggestions for any areas
-where the plugins may not be optimal, so that we can collectively enhance them.
+Thank you for visiting my **bricks**, and I hope you will provide feedback or suggestions for any areas where the package may not be optimal, so that we can collectively enhance them.
 
-Contact me: [congson99vn@gmail.com](mailto:congson99vn@gmail.com)
-| [linkedin](https://www.linkedin.com/in/congson/) | [github](https://github.com/congson99)
+Contact me: [congson99vn@gmail.com](mailto:congson99vn@gmail.com) | [linkedin](https://www.linkedin.com/in/congson/) | [github](https://github.com/congson99)
