@@ -4,7 +4,7 @@
 
 This repository is where I compile and share **Flutter Packages** that I conceive and develop. (I
 refer to these packages as **"Brick"** because they are akin to the bricks that construct a complete
-project :smile: )
+project :smile:)
 
 Some of them will be published on [pub.dev](http://pub.dev/). Others, which need customization inside the package to be usable, will be shared in this repository, and you will need to manually copy and
 set them up in your source code for usage. I have provided detailed instructions right below.
@@ -20,7 +20,8 @@ set them up in your source code for usage. I have provided detailed instructions
 
 # How to use local packages
 
-**• Step 1:** Create a directory named "bricks" or any name you prefer within the root directory of
+## Step 1 
+Create a directory named "bricks" or any name you prefer within the root directory of
 your project, similar to this source. (This directory will store the customized packages for your
 project)
 
