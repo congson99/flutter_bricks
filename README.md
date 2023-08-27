@@ -8,6 +8,7 @@ project :>)
 
 Some of them will be published on [pub.dev](http://pub.dev/). Others, which need customization inside the package to be usable, will be shared in this repository, and you will need to manually copy and
 set them up in your source code for usage. I have provided detailed instructions right below.
+
 <br />
 
 # Packages
@@ -15,7 +16,6 @@ set them up in your source code for usage. I have provided detailed instructions
 | Packages                                                     | Description                                                                                                  | Type |                                             http://pub.dev/                                              | 
 |:----------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:----:|:---------------------------------------------------------------------------------------------------------:|
 | [avatar_brick](https://github.com/congson99/avatar_brick) | Avatar Brick is a custom avatar can automatically display your abbreviation name when no avatar is available |Widget| [![pub package](https://img.shields.io/badge/pub.dev-v0.1.5-blue)](https://pub.dev/packages/avatar_brick) |
-
 <br />
 
 # How to use local packages
