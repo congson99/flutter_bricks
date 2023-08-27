@@ -54,8 +54,8 @@ Widget avatarBrick() =>
 
 <br />
 
-# Thank you for using my packages!
+# Thank you!
 
-Thank you for visiting my **bricks**, and I hope you will provide feedback or suggestions for any areas where the package may not be optimal, so that we can collectively enhance them.
+Thank you for using my **bricks**, and I hope you will provide feedback or suggestions for any areas where the package may not be optimal, so that we can collectively enhance them.
 
 Contact me: [congson99vn@gmail.com](mailto:congson99vn@gmail.com) | [linkedin](https://www.linkedin.com/in/congson/) | [github](https://github.com/congson99)
