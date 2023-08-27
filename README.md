@@ -1,6 +1,6 @@
 # Flutter Bricks
 
-<a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/master/assets/icons/app_icon.png?raw=true" alt="Icon" width="120"></a>
+<a href="https://github.com/congson99/bricks"><img src="https://github.com/congson99/bricks/blob/master/assets/logo.png?raw=true" alt="Icon" width="120"></a>
 
 This repository is where I compile and share **Flutter Packages** that I conceive and develop. (I
 refer to these packages as **"Brick"** because they are akin to the bricks that construct a complete
@@ -39,7 +39,7 @@ dependencies:
     path: local_package/_avatar
 ```
 
-### Step 3
+### Step 4
 Import the path of that package where you want to use it and start utilizing it. as shown in the following example:
 
 ```dart
