@@ -15,7 +15,7 @@ set them up in your source code for usage. I have provided detailed instructions
 
 | Packages                                                     | Description                                                                                                  | Type |                                              http://pub.dev/                                              | 
 |:----------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:----:|:---------------------------------------------------------------------------------------------------------:|
-| [avatar_brick](https://github.com/congson99/avatar_brick) | Avatar Brick is a custom avatar can automatically display your abbreviation name when no avatar is available |Widget| [![pub package](https://img.shields.io/badge/pub.dev-v0.2.0-blue)](https://pub.dev/packages/avatar_brick) |
+| [avatar_brick](https://github.com/congson99/avatar_brick) | Avatar Brick is a custom avatar can automatically display your abbreviation name when no avatar is available |Widget| [![pub package](https://img.shields.io/badge/pub.dev-v1.0.0-blue)](https://pub.dev/packages/avatar_brick) |
 <br />
 
 # How to use local packages
